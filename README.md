@@ -27,13 +27,14 @@
  > For this project we only need to use c++ for our language.
  > For our input, users will able to create accounts or log in previously made accounts. Users will then be able to check out books they want. In terms output users will be can see all books or filter it 
  under a sub-cateogory
+
  > Our features we want are
-   > *Users being able sign in or log into account(this information will be stored in a txt file)
-   > *Users should be able to see all books that are avilable
-   > *Users are able to filter out books based on said genre or combine genres
-   > *Users should be to see their reading history
-   > *Adminstrators should be able to add or delete books from the library
-   > *There should be book recommendation feature based off of user reading history        
+   > * Users being able sign in or log into account(this information will be stored in a txt file)
+   > * Users should be able to see all books that are avilable
+   > * Users are able to filter out books based on said genre or combine genres
+   > * Users should be to see their reading history
+   > * Adminstrators should be able to add or delete books from the library
+   > * There should be book recommendation feature based off of user reading history        
  > You also need to set up an empty project board using GitHub projects (board view with default columns). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added. All columns should be in the right order.
  > ## Phase II
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
