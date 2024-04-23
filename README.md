@@ -1,6 +1,6 @@
 
 # CS100 Libarary system projecy
- > Authors: [Aaron Hernandez-Sledge](https://github.com/AaronSledge) [Haard Shah](https://github.com/haasha600)[Alan Diaz](https://github.com/alandiazv)[Yongyan Liang](https://github.comylian121)
+ > Authors: [Aaron Hernandez-Sledge](https://github.com/AaronSledge) [Haard Shah](https://github.com/haasha600) [Alan Diaz](https://github.com/alandiazv) [Yongyan Liang](https://github.comylian121)
 
  > ## Expectations
  > * The backend of your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
