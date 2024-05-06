@@ -1,23 +1,25 @@
-
-# CS100 Libarary system projecy
+# CS100 Library system project
  > Authors: [Aaron Hernandez-Sledge](https://github.com/AaronSledge) [Haard Shah](https://github.com/haasha600) [Alan Diaz](https://github.com/alandiazv) [Yongyan Liang](https://github.comylian121)
 
 
-## Project Description
+## Why are our project is important
 
- > We chose a libarary system because the description sounds interesting. Also it is something that is applicable in real world.
- > For this project we only need to use c++ for our language.
- > For our input, users will able to create accounts or log in previously made accounts. Users will then be able to check out books they want. In terms output users will be can see all books or filter it 
- under a sub-cateogory
+ > We chose a libarary system because the description sounds interesting. Also it is something that is applicable in real world. Along with this, this project is important as it provides a solution to sorting a large set of data. It provides conveince, efficency, and a way for users to discover new books. Being able to sort a large set of books is a challenge on its own, providng us an opportunity to learn how to handle a big project of this magntiude.
+ > For this project we only need to use c++ for our language
 
- > Our features we want are
+
+## INPUT/OUTPUT
+ > For our input, users will be able to enter in their email and password to sign in and login. After that enter users can enter and look through books by their titles and genres. They would also be able pick the books you want to borrow.
+> In terms of output, users will be able to see the books that is in our library. Users will also be able to know whether a book is avivilable or not. They will also be able to see any books recommended to them 
+
+## Our features we want are
    > * Users being able sign in or log into account(this information will be stored in a txt file)
    > * Users should be able to see all books that are avilable
    > * Users are able to filter out books based on said genre or combine genres
    > * Users should be to see their reading history
    > * Adminstrators should be able to add, edit, or delete books from the library
    > * Users should be able to see account debt
-   > * There should be book recommendation feature based off of user reading history        
+   > * There should be book recommendation feature based off of user reading history     
 
  > ## Phase II
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
