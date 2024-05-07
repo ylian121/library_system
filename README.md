@@ -37,7 +37,8 @@
 
 ### Navigation Diagram
 > 
-><img width="834" alt="Screen Shot 2024-05-05 at 8 35 35 PM" src="https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/165940838/ada0178b-49e6-4540-aee6-ce32c865b053">
+><img width="849" alt="Screen Shot 2024-05-06 at 7 06 48 PM" src="https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/165940838/54027d57-98fc-4261-ba1c-e4d0568952b5">
+
 >
 > 
 >
