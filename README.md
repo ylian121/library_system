@@ -53,7 +53,9 @@
 
 
 ## Class Diagram
- ![UML Diagram](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/67347173/dcfd95fd-4217-4a33-8661-60386a5f879a)
+![UML_Diagram](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/67347173/9a3fe2bb-c3db-4306-91a1-151424cc9a34)
+
+
 
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
