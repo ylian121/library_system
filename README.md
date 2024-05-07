@@ -37,11 +37,13 @@
 
 ### Navigation Diagram
 > Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
+> 
 ><img width="834" alt="Screen Shot 2024-05-05 at 8 35 35 PM" src="https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/165940838/ada0178b-49e6-4540-aee6-ce32c865b053">
 
 >
 > ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs and expected output, or any graphical user interface components if applicable (e.g. buttons, text boxes, etc). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+>Our screens is just going to consists of the terminal output. The first thing user see is a prompt to sign in. We would want to ask if a user is a consumer or admin due to different features being aviliable. If player picked user it will go to the home menu which welcomes the user. Then they will have a variety of options to choose from seeing book history, returning books, and seeing the catalog. The admin home screen differs because they will able to directly add, remove, or edit books from the library. When users pick see catalog, they will be able to see the entire list of book we hold in the collection. As with book history, a specfic user's reading history will all be displayed to the terminal.
+>
 >![screen diagram](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/120629557/f450418a-ce2f-493a-b464-89a483c4ad83)
 
 
