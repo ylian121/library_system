@@ -151,6 +151,7 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     getline(inFS, passWord);
     getline(inFS, fullName);
 
+    string passWordIn;
     cout << "Please enter your password: ";
     cin >> passWordIn;
     cout << endl;
