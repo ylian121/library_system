@@ -44,6 +44,32 @@ void checkSameUserName(string &inputUserName) {
     outFS.close();
 }
 
+void passwordChecker(string &password) {
+    if(!isalpha(password[0])) {
+        cout << "Password must start with an uppercase letter. Please try again" << endl;
+        cin >> password;
+        passwordChecker(password);
+    }
+    else if(!isupper(password[0])) {
+        cout << "First letter is not uppercase. Please try again" << endl;
+        cin >> password;
+        passwordChecker(password);
+    }
+
+    bool digitPresent = false;
+    for(int i = 1; i < password.length(); ++i) {
+        if (isdigit(password[i])) {
+            digitPresent = true;
+        }
+    }
+
+    if (digitPresent == false) {
+        cout << "password must have a number in it" << endl;
+        cin >> password;
+        passwordChecker(password);
+    }
+}
+
 void registerFirstTime(bool isUser, const string &fullName, string &passWord, string &inputUserName) {
     //first ask for name, password, and username
     //create txt file usernames, store username
@@ -61,7 +87,7 @@ void registerFirstTime(bool isUser, const string &fullName, string &passWord, st
     //check if pass word is the same before creating txt files
     checkSameUserName(inputUserName);
 
-    //add in password checker
+    passwordChecker(passWord);
 
 
     //if the person is a user, go through the user filePath
@@ -141,7 +167,7 @@ int main() {
     cout << "please enter your name" << endl;
     cin >> fullName;
     
-    cout << "please enter your password" << endl;
+   cout << "please enter your password. Password must start with an upper case letter and has a number." << endl;
     cin >> passWord;
 
     cout << "please enter a userName" << endl;
