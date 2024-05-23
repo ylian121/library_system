@@ -3,6 +3,8 @@
 #include <string>
 #include <stdexcept>
 
+//#include person, user, admin header files
+
 using std::string;
 using std::cin;
 using std::cout;
@@ -184,6 +186,7 @@ void login(const bool &isUser, const string &inputUserName, const string &passWo
 
         //FIXME: create admin object
 
+
     }
 
 }
@@ -243,6 +246,17 @@ int main() {
     else {
 
         signin(isUser, inputUserName, passWord, fullName);
+
+        if (isUser) {
+
+            //create user object
+
+        }
+        else if (!isUser) {
+
+            Admin* currAdmin = new Admin(inputUserName, passWord, true);
+            currAdmin->setName(fullName);
+        }
 
     }
 
