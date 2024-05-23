@@ -19,8 +19,8 @@ class Admin : public Person{
 
  public:
     Admin(string user, string pass, Library& libraryAccess) : Person(user, pass), library(libraryAccess){}
-    void addBooks(book, library);
-    void removeBook(book, library);
-    void addGenre(book, string);
-    void removeGenre(book, string);
+    void addBooks(const string& bookName);
+    void removeBook(const string& bookName);
+    void addGenre(const string& bookGenre);
+    void removeGenre(const string& bookGenre);
 };
