@@ -9,15 +9,19 @@ using std::vector;
 
 class Library{
  private:
-    vector<Book> book;
-    vector<string> genre;
-    
+    vector<Book> bookList;
+
  public:
     Library();
-    void addBook(Book);
-    void remove(Book);
-    void checkout(Book);
-    void checkin(Book);
-    Book findBook();
+    void addBook(const Book& book);
+    void remove(const Book& book);
+    void checkout(const Book& book);
+    void checkin(const Book& book);
+    Book findBook(const string& bookName);
+
+private:
+    //helper function to help find book
+    //use from the book class to find the name
+    string getBookName(const Book& book);
 
 };
