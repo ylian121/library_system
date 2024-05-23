@@ -2,7 +2,6 @@
 
 #include <string>
 #include <vector>
-#include <algorithm>
 #include "Person.hpp"
 #include "library.h"
 
@@ -19,7 +18,7 @@ class Admin : public Person{
     Library& library;
 
  public:
-    Admin(string, string);
+    Admin(string user, string pass, Library& libraryAccess) : Person(user, pass), library(libraryAccess){}
     void addBooks(book, library);
     void removeBook(book, library);
     void addGenre(book, string);
