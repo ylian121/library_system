@@ -3,7 +3,8 @@
 #include <string>
 #include <stdexcept>
 
-//#include person, user, admin header files
+#include <Admin.hpp>
+#include <User.hpp>
 
 using std::string;
 using std::cin;
@@ -247,6 +248,7 @@ int main() {
 
         signin(isUser, inputUserName, passWord, fullName);
 
+        //login process:
         if (isUser) {
 
             //create user object
