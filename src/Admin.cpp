@@ -5,6 +5,9 @@
 using std::cout;
 using std::endl;
 
+//admin have access to changes in the library
+//adding/removing books will be from book/library class
+
 void Admin::addBooks(const string& bookName){
     library.addBook(Book(bookName));
 }
