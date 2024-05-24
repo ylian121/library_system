@@ -2,7 +2,9 @@
 
 #include <string>
 #include<vector>
-#include "book.h"
+#include "Book.hpp"
+#include "Library.hpp"
+#include "Person.hpp"
 
 using std::string;
 using std::vector;
