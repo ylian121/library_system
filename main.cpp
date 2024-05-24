@@ -260,19 +260,19 @@ int main() {
         
         signin(isUser, inputUserName, passWord, fullName);
 
-        //login process:
-        if (isUser) {
+    }
 
-            User* currUser = new User(inputUserName, passWord, library);
-            currUser->setName(fullName);
+    //login process:
+    if (isUser) {
 
-        }
-        else if (!isUser) {
+        User* currUser = new User(inputUserName, passWord, library);
+        currUser->setName(fullName);
 
-            Admin* currAdmin = new Admin(inputUserName, passWord, library);
-            currAdmin->setName(fullName);
-        }
+    }
+    else if (!isUser) {
 
+        Admin* currAdmin = new Admin(inputUserName, passWord, library);
+        currAdmin->setName(fullName);
     }
 
 }
