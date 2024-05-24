@@ -15,38 +15,74 @@ void Library::addBook(const Book& book){
 
 //need to find book first and then remove
 void Library::remove(const Book& book){
+
     for(int i=0; i<bookList.size(); ++i){
-        //remove all the books from the library
-        while(getBookName(bookList[i]) == getBookName(book)){
+        if(getBookName(bookList[i]) == getBookName(book)){
             bookList.erase(bookList.begin()+i);
+            return;
         }
     }
+
+    cout << "book does not exist in library" << endl;
+    cout << "check spelling and try again" << endl;
+    return;
+
 }
 
 //use checkout and checkin from book class
 void Library::checkout(const Book& book){
+
+    if(!findBook(book)){
+        cout << "book not found" << endl;
+        cout << "nothing to check out" << endl;
+        return;
+    }
+
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == getBookName(book)){
             book.checkout();
+            return;
         }
     }
+
+    cout << "failure to check out book" << endl;
+    return;
+
 }
 
 //use checkout and checkin from book class
 void Library::checkin(const Book& book){
+
+    if(!findBook(book)){
+        cout << "book not found" << endl;
+        cout << "nothing to check out" << endl;
+        return;
+    }
+
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == getBookName(book)){
             book.checkin();
+            return;
         }
     }
+
+    cout << "failure to check in book" << endl;
+    return;
+
 }
 
 Book Library::findBook(const string& bookName){
+
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == bookName){
             return bookList[i];
         }
     }
+
+    cout << "book not found in library" << endl;
+    cout << "check spelling and try again" << endl;
+    return;
+
 }
 
 string Library::getBookName(const Book& book){
