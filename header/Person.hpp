@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-
+#include "Library.hpp"
 using std::string;
 
 class Person{
@@ -9,8 +9,10 @@ class Person{
     string username;
     string password;
     string name;
+    Library &myLibrary;
  public:
-    Person(string user, string pass): username(user), password(pass), name(""){}
+    Person() : username("default"), password("Default1"), myLibrary(myLibrary){}
+    Person(string user, string pass, Library &library): username(user), password(pass), myLibrary(library){}
     string getName(){
         return name;
     }
