@@ -2,8 +2,9 @@
 
 #include <string>
 #include <vector>
+#include "Book.hpp"
+#include "Library.hpp"
 #include "Person.hpp"
-#include "library.h"
 
 using std::string;
 using std::vector;
@@ -23,4 +24,6 @@ class Admin : public Person{
     void removeBook(const string& bookName);
     void addGenre(const string& bookGenre);
     void removeGenre(const string& bookGenre);
+    void logIn();
+    void logOut();
 };
