@@ -40,7 +40,8 @@ void Library::checkout(const Book& book){
 
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == getBookName(book)){
-            book.checkout();
+            //book.checkin();
+            booksCheckedOut.push_back(bookList[i]);
             return;
         }
     }
@@ -60,8 +61,9 @@ void Library::checkin(const Book& book){
     }
 
     for(int i=0; i<bookList.size(); ++i){
-        if(getBookName(bookList[i]) == getBookName(book)){
-            book.checkin();
+        if(getBookName(booksCheckedOut[i]) == getBookName(book)){
+            //book.checkin();
+            booksCheckedOut.erase(booksCheckedOut.begin()+i);
             return;
         }
     }

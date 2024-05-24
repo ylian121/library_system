@@ -12,6 +12,7 @@ using std::vector;
 class Library{
  private:
     vector<Book> bookList;
+    vector<Book> booksCheckedOut;
 
  public:
     Library();
