@@ -207,15 +207,17 @@ void printUserMenu(string fullName){
     cout << "Press b to see all books" << endl;
     cin >> input;
     cout << endl;
+    //add in necessary functions to call
 }
 
-void printAdminMenu(){
+void printAdminMenu(string fullName){
     char input;
     cout << "Welcome " << fullName << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
     cin >> input;
     cout << endl;
+    //add in necessary functions to call
 }
 
 int main() {
