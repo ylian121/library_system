@@ -3,15 +3,19 @@
 #include <string>
 #include <stdexcept>
 
+#include <Admin.hpp>
+#include <User.hpp>
+
 using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::ifstream;
 
 
 void checkSameUserName(string &inputUserName) {
     string userName;
-    std::ifstream inFS;
+    ifstream inFS;
     inFS.open("username.txt");
 
     //check if file can be open
@@ -121,16 +125,80 @@ void registerFirstTime(bool isUser, const string &fullName, string &passWord, st
     }
 }
 
+bool checkExistingUserName(const string &inputUserName) {
 
-/*void signin(bool isUser) {
-    //ask username, password
-    //first check if username is actually there in the txt.file
-    //if not input them to type again
-    //then check <username>.txt file and see if password == input(password is 2nd line)
-    //if not equal try again
+    ifstream inFS("username.txt");
+    string username;
+
+    if (!(inFS.is_open())) {
+
+        throw std::runtime_error("couldn't open username.txt");
+
+    }
+
+    while(getline(inFS, username)) {
+
+        if (inputUserName == username) {
+
+            return true;
+
+        }
+
+    }
+
+    return false;
 
 }
-*/
+
+void signin(const bool &isUser, string &inputUserName, string &passWord, string &fullName) {
+    
+    cout << "Please enter your username: ";
+    cin >> inputUserName;
+    cout << endl;
+
+    if (!(checkExistingUserName(inputUserName))) {
+
+        //FIXME: handle case properly when username does not exist
+        throw std::runtime_error(inputUserName + "does not exist");
+
+    }
+    
+    ifstream inFS;
+    string filename = inputUserName + ".txt";
+
+    inFS.open(filename);
+
+    if (!(inFS.is_open())) {
+
+        throw std::runtime_error("couldn't open " + filename);
+    
+    }
+
+    string burnLine = "";
+
+    getline(inFS, burnLine);
+    getline(inFS, passWord);
+    getline(inFS, fullName);
+
+    string passWordIn;
+    cout << "Please enter your password: ";
+    cin >> passWordIn;
+    cout << endl;
+
+    if (passWordIn == passWord) {
+
+        cout << "Welcome back " << fullName << "!" << endl;
+        return;
+
+    }
+    else {
+
+        throw std::runtime_error("invalid password");
+
+    }
+
+}
+
 int main() {
     //Make library object
 
@@ -170,21 +238,41 @@ int main() {
    cout << "please enter your password. Password must start with an upper case letter and has a number." << endl;
     cin >> passWord;
 
-    cout << "please enter a userName" << endl;
-    cin >> inputUserName;
 
     if(signinFirstTime == "yes") {
+
+        cout << "please enter your name" << endl;
+        cin >> fullName;
+        cout << endl;
+        
+        cout << "please enter your password" << endl;
+        cin >> passWord;
+        cout << endl;
+
+        cout << "please enter a userName" << endl;
+        cin >> inputUserName;
+        cout << endl;
+
         registerFirstTime(isUser, fullName, passWord, inputUserName);
         //create user or admin object
     }
     else {
-        //sign in function
-        //create user or admin object
-        //login()
+        
+        signin(isUser, inputUserName, passWord, fullName);
+
+        //login process:
+        if (isUser) {
+
+            User* currUser = new User(inputUserName, passWord, library);
+            currUser->setName(fullName);
+
+        }
+        else if (!isUser) {
+
+            Admin* currAdmin = new Admin(inputUserName, passWord, library);
+            currAdmin->setName(fullName);
+        }
+
     }
 
-    /*if(isUser == true) {
-        //create user object
-        //print usermenu...
-    }*/
 }
