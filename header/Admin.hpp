@@ -5,6 +5,7 @@
 #include "Book.hpp"
 #include "Library.hpp"
 #include "Person.hpp"
+#include "Library.hpp"
 
 using std::string;
 using std::vector;

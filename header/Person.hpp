@@ -10,12 +10,13 @@ class Person{
     string password;
     string name;
  public:
-    Person(string user, string pass): username(user), password(pass), name(""){}
+    Person(){}
+    Person(const string& user, const string& pass): username(user), password(pass), name(""){}
     string getName(){
         return name;
     }
-    void setName(string name){
-        name = name;
+    void setName(const string& name){
+        this->name = name;
     }
 
 };

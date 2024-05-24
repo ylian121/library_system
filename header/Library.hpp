@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <string>
@@ -26,5 +27,4 @@ private:
     //helper function to help find book
     //use from the book class to find the name
     string getBookName(const Book& book);
-
 };
