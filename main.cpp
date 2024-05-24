@@ -162,15 +162,12 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     if (passWordIn == passWord) {
 
         cout << "Welcome back " << fullName << "!" << endl;
-
-        //FIXME: call function to create user object or admin object
-        login(isUser, inputUserName, passWord, fullName);
-
+        return;
 
     }
     else {
 
-        //FIXME: figure out what to do if inputed password is incorrect (either provide more attempts or exit)
+        throw std::runtime_error("invalid password");
 
     }
 
@@ -235,19 +232,16 @@ int main() {
         //login process:
         if (isUser) {
 
-            //create user object
+            User* currUser = new User(inputUserName, passWord, library);
+            currUser->setName(fullName);
 
         }
         else if (!isUser) {
 
-            Admin* currAdmin = new Admin(inputUserName, passWord, true);
+            Admin* currAdmin = new Admin(inputUserName, passWord, library);
             currAdmin->setName(fullName);
         }
 
     }
 
-    /*if(isUser == true) {
-        //create user object
-        //print usermenu...
-    }*/
 }
