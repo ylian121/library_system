@@ -176,22 +176,6 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 
 }
 
-void login(const bool &isUser, const string &inputUserName, const string &passWord, const string &fullName) {
-
-    if (isUser) {
-
-        //FIXME: create user object
-
-    }
-    else {
-
-        //FIXME: create admin object
-
-
-    }
-
-}
-
 int main() {
     //Make library object
 
@@ -245,7 +229,7 @@ int main() {
         //create user or admin object
     }
     else {
-
+        
         signin(isUser, inputUserName, passWord, fullName);
 
         //login process:
