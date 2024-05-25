@@ -141,12 +141,14 @@ bool checkExistingUserName(const string &inputUserName) {
 
         if (inputUserName == username) {
 
+            inFS.close();
             return true;
 
         }
 
     }
 
+    inFS.close();
     return false;
 
 }
@@ -186,6 +188,8 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     cin >> passWordIn;
     cout << endl;
 
+    inFS.close();
+
     if (passWordIn == passWord) {
 
         cout << "Welcome back " << fullName << "!" << endl;
@@ -201,7 +205,45 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 
 }
 
-void printGenre(string &genre) {
+void printGenre(const string &genre) {
+    
+    ifstream inFS;
+
+    inFS.open("books.txt");
+    if(!(inFS.is_open())) {
+        throw std::runtime_error("couldn't open books.txt");
+    }
+
+    string bookLine;
+    unsigned int i = 0;
+    bool genreFound = false;
+
+    while (getline(inFS, bookLine)) {
+        if (inFS.bad()){
+
+            inFS.close()
+            throw std::runtime_error("error reading from books.txt");
+
+        }
+
+        if (bookLine.find(genre) != std::string::npos) {
+
+            genreFound = true;
+            ++i;
+
+            cout << i << ". " << bookLine << endl;
+
+        }
+
+    }
+
+    if (!genreFound) {
+
+        cout << "No books found for the genre: " << genre << endl;
+
+    }
+
+    inFS.close();
 
 }
 
