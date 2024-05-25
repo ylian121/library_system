@@ -141,12 +141,14 @@ bool checkExistingUserName(const string &inputUserName) {
 
         if (inputUserName == username) {
 
+            inFS.close();
             return true;
 
         }
 
     }
 
+    inFS.close();
     return false;
 
 }
@@ -185,6 +187,8 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     cout << "Please enter your password: ";
     cin >> passWordIn;
     cout << endl;
+
+    inFS.close();
 
     if (passWordIn == passWord) {
 
