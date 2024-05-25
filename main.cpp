@@ -200,6 +200,32 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 }
 
 
+void printUserMenu(string fullName){
+    char input;
+    cout << "Welcome " << fullName << endl;
+    cout << "Press h to see history" << endl;
+    cout << "Press d to see account debt" << endl;
+    cout << "Press b to see all books" << endl;
+    cin >> input;
+    cout << endl;
+    //add in necessary functions to call
+}
+
+void printAdminMenu(string fullName){
+    char input;
+    cout << "Welcome " << fullName << endl;
+    cout << "Would you like to edit our collection" << endl;
+    cout << "Type y or n" << endl;
+    cin >> input;
+    cout << endl;
+    //add in necessary functions to call
+}
+
+int main() {
+    //Make library object
+
+
+
 
 int main() {
     Library* newLibrary = new Library();
