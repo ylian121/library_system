@@ -199,6 +199,8 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 
 }
 
+
+
 int main() {
     Library* newLibrary = new Library();
     char start;
@@ -266,12 +268,14 @@ int main() {
 
         User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
+        //printUserMenu(fullName)
 
     }
     else if (!isUser) {
 
         Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
         currAdmin->setName(fullName);
+        //printAdminMenu(fullName)
     }
 
 }
