@@ -42,7 +42,9 @@
 
 
 ## Class Diagram
-![image](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/67347173/fe4bdd98-6a3b-4617-8213-c40ed53ebaf9)
+![UML_Diagram](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/67347173/fe4bdd98-6a3b-4617-8213-c40ed53ebaf9)
+
+Our classes all follow the SOLID principles. Every single class has exactly one role: to represent the object and manipulate its data. All of our objects are open to extension but closed to modification once implemented. In all instances of inheritance, all subclasses can substitute and function as an instance of the parent class. Our class design also doesn't allow for interfaces that can violate the ISP or DIP.
 
 
 
