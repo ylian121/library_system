@@ -244,6 +244,27 @@ void printLibrary() {
     }
 }
 
+void printUserMenu(string fullName){
+    char input;
+    cout << "Welcome " << fullName << endl;
+    cout << "Press h to see history" << endl;
+    cout << "Press d to see account debt" << endl;
+    cout << "Press b to see all books" << endl;
+    cin >> input;
+    cout << endl;
+    //add in necessary functions to call
+}
+
+void printAdminMenu(string fullName){
+    char input;
+    cout << "Welcome " << fullName << endl;
+    cout << "Would you like to edit our collection" << endl;
+    cout << "Type y or n" << endl;
+    cin >> input;
+    cout << endl;
+    //add in necessary functions to call
+}
+
 int main() {
     //Library* newLibrary = new Library();
     char start;
@@ -308,14 +329,11 @@ int main() {
 
     //login process:
     if (isUser) {
-
         //User* currUser = new User(inputUserName, passWord, newLibrary);
         //currUser->setName(fullName);
         printLibrary();
-
     }
     else if (!isUser) {
-
         //Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
         //currAdmin->setName(fullName);
     }

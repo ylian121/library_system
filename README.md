@@ -42,7 +42,7 @@
 
 
 ## Class Diagram
-![UML_Diagram](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/67347173/6edf85ae-d59a-4afc-9c91-20db6bb12b52)
+![image](https://github.com/cs100/final-project-ahern561-hshah050-adiaz205-ylian121/assets/67347173/fe4bdd98-6a3b-4617-8213-c40ed53ebaf9)
 
 
 
