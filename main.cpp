@@ -3,8 +3,8 @@
 #include <string>
 #include <stdexcept>
 
-#include <Admin.hpp>
-#include <User.hpp>
+#include <header/Admin.hpp>
+#include <header/User.hpp>
 
 using std::string;
 using std::cin;
@@ -199,6 +199,7 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 
 }
 
+
 void printUserMenu(string fullName){
     char input;
     cout << "Welcome " << fullName << endl;
@@ -223,6 +224,11 @@ void printAdminMenu(string fullName){
 int main() {
     //Make library object
 
+
+
+
+int main() {
+    Library* newLibrary = new Library();
     char start;
     bool isUser = false;
     string userOrAdmin;
@@ -286,14 +292,16 @@ int main() {
     //login process:
     if (isUser) {
 
-        User* currUser = new User(inputUserName, passWord, library);
+        User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
+        //printUserMenu(fullName)
 
     }
     else if (!isUser) {
 
-        Admin* currAdmin = new Admin(inputUserName, passWord, library);
+        Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
         currAdmin->setName(fullName);
+        //printAdminMenu(fullName)
     }
 
 }
