@@ -3,8 +3,9 @@
 #include <string>
 #include <stdexcept>
 
-#include <header/Admin.hpp>
-#include <header/User.hpp>
+#include "header/Admin.hpp"
+#include "header/Library.hpp"
+#include "header/User.hpp"
 
 using std::string;
 using std::cin;
@@ -164,7 +165,7 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     }
     
     ifstream inFS;
-    string filename = inputUserName + ".txt";
+    string filename = "users/" + inputUserName + ".txt";
 
     inFS.open(filename);
 
@@ -188,6 +189,7 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     if (passWordIn == passWord) {
 
         cout << "Welcome back " << fullName << "!" << endl;
+        cout << endl;
         return;
 
     }
@@ -199,8 +201,51 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 
 }
 
+void printGenre(string &genre) {
+
+}
+
+void printLibrary() {
+    ifstream inFS;
+
+    inFS.open("books.txt");
+    if(!(inFS.is_open())) {
+        throw std::runtime_error("couldn't open books.txt");
+    }
+
+    cout << "Here our all the books you owe" << endl;
+    string book;
+    while(getline(inFS, book)) {
+        cout << book << endl;
+        cout << endl;
+    }
+    inFS.close();
+
+    cout << "press g if you want to filter by genre" << endl;
+    cout << "press a to borrow book" << endl;
+
+    char input;
+    if(not(cin >> input)) {
+        throw std::runtime_error("couldn't get input");
+    }
+    if (input == 'g') {
+        cout << "Enter genre" << endl;
+        string genre;
+        cin >> genre;
+
+        printGenre(genre);
+    }
+
+    if (input == 'a') {
+        cout << "Enter title" << endl;
+        string title;
+        cin >> title;
+        //borrow book
+    }
+}
+
 int main() {
-    Library* newLibrary = new Library();
+    //Library* newLibrary = new Library();
     char start;
     bool isUser = false;
     string userOrAdmin;
@@ -264,14 +309,15 @@ int main() {
     //login process:
     if (isUser) {
 
-        User* currUser = new User(inputUserName, passWord, newLibrary);
-        currUser->setName(fullName);
+        //User* currUser = new User(inputUserName, passWord, newLibrary);
+        //currUser->setName(fullName);
+        printLibrary();
 
     }
     else if (!isUser) {
 
-        Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
-        currAdmin->setName(fullName);
+        //Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
+        //currAdmin->setName(fullName);
     }
 
 }

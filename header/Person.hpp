@@ -9,10 +9,9 @@ class Person{
     string username;
     string password;
     string name;
-    Library &myLibrary;
  public:
-    Person() : username("default"), password("Default1"), myLibrary(myLibrary){}
-    Person(string user, string pass, Library &library): username(user), password(pass), myLibrary(library){}
+    Person() : username("default"), password("Default1"){}
+    Person(string user, string pass): username(user), password(pass){}
     string getName(){
         return name;
     }
