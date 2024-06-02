@@ -1,4 +1,5 @@
-#include "Book.hpp"
+#include "../header/Book.hpp"
+#include "../header/Library.hpp"
 #include <iostream>
 #include <string.h>
 
@@ -32,7 +33,7 @@ void Library::remove(const Book& book){
 //use checkout and checkin from book class
 void Library::checkout(const Book& book){
 
-    if(!findBook(book)){
+    if(!findBook(getBookName(book))){
         cout << "book not found" << endl;
         cout << "nothing to check out" << endl;
         return;
@@ -54,7 +55,7 @@ void Library::checkout(const Book& book){
 //use checkout and checkin from book class
 void Library::checkin(const Book& book){
 
-    if(!findBook(book)){
+    if(!findBook(getBookName(book))){
         cout << "book not found" << endl;
         cout << "nothing to check out" << endl;
         return;
@@ -73,20 +74,20 @@ void Library::checkin(const Book& book){
 
 }
 
-Book Library::findBook(const string& bookName){
+bool Library::findBook(const string& bookName){
 
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == bookName){
-            return bookList[i];
+            return true;
         }
     }
 
     cout << "book not found in library" << endl;
     cout << "check spelling and try again" << endl;
-    return;
+    return false;
 
 }
 
 string Library::getBookName(const Book& book){
-    return book.getBookName();
+    return book.getName();
 }

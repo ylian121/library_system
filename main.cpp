@@ -221,7 +221,7 @@ void printGenre(const string &genre) {
     while (getline(inFS, bookLine)) {
         if (inFS.bad()){
 
-            inFS.close()
+            inFS.close();
             throw std::runtime_error("error reading from books.txt");
 
         }
@@ -255,7 +255,7 @@ void printLibrary() {
         throw std::runtime_error("couldn't open books.txt");
     }
 
-    cout << "Here our all the books you owe" << endl;
+    cout << "Here is the list of our books available:" << endl;
     string book;
     while(getline(inFS, book)) {
         cout << book << endl;
@@ -286,29 +286,52 @@ void printLibrary() {
     }
 }
 
-void printUserMenu(string fullName){
-    char input;
+void printUserMenu(User* currUser, const string fullName){
+    char userChoice;
     cout << "Welcome " << fullName << endl;
     cout << "Press h to see history" << endl;
     cout << "Press d to see account debt" << endl;
     cout << "Press b to see all books" << endl;
-    cin >> input;
+    cin >> userChoice;
     cout << endl;
-    //add in necessary functions to call
+    
+    if (userChoice = 'h') {
+        //vector<Book> booksRead;
+        currUser->readHistory();
+
+    }
+    else if (userChoice == 'd') {
+
+        currUser->printDebt();
+
+    }
+    else if (userChoice == 'b') {
+
+        printLibrary();
+
+    }
+    else {
+
+        throw std::runtime_error("invalid choice");
+
+    }
+
+    return;
+
 }
 
-void printAdminMenu(string fullName){
-    char input;
+void printAdminMenu(Admin* currAdmin, const string fullName){
+    char adminChoice;
     cout << "Welcome " << fullName << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
-    cin >> input;
+    cin >> adminChoice;
     cout << endl;
     //add in necessary functions to call
 }
 
 int main() {
-    //Library* newLibrary = new Library();
+    Library* newLibrary = new Library();
     char start;
     bool isUser = false;
     string userOrAdmin;
@@ -371,13 +394,13 @@ int main() {
 
     //login process:
     if (isUser) {
-        //User* currUser = new User(inputUserName, passWord, newLibrary);
-        //currUser->setName(fullName);
+        User* currUser = new User(inputUserName, passWord, newLibrary);
+        currUser->setName(fullName);
         printLibrary();
     }
     else if (!isUser) {
-        //Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
-        //currAdmin->setName(fullName);
+        Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
+        currAdmin->setName(fullName);
     }
 
 }

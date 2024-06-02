@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include<vector>
+#include <vector>
 #include "Book.hpp"
 #include "Library.hpp"
 #include "Person.hpp"
@@ -20,7 +20,7 @@ class Library{
     void remove(const Book& book);
     void checkout(const Book& book);
     void checkin(const Book& book);
-    Book findBook(const string& bookName);
+    bool findBook(const string& bookName);
 
 private:
     //helper function to help find book
