@@ -1,8 +1,8 @@
-#include "Admin.hpp"
+#include "../header/Admin.hpp"
 #include <iostream>
 #include <string.h>
-#include "User.hpp"
-#include "Book.hpp"
+#include "../header/User.hpp"
+#include "../header/Book.hpp"
 #include <fstream>
 
 using std::ofstream;
@@ -13,7 +13,7 @@ using std::endl;
 //admin have access to changes in the library
 //adding/removing books will be from book/library class
 
-void Admin::addBooks(const string& bookName){
+/*void Admin::addBooks(const string& bookName){
     library.addBook(Book(bookName));
 }
 
@@ -56,5 +56,5 @@ void Admin::logOut(){
         outStream << currBook.getName() << endl;
     }
 
-}
+}*/
 

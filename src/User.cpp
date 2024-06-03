@@ -1,5 +1,5 @@
-#include "User.hpp"
-#include "Book.hpp"
+#include "../header/User.hpp"
+#include "../header/Book.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -8,7 +8,7 @@ using std::endl;
 using std::ofstream;
 using std::ifstream;
 
-void User::checkOut(const string& bookName)
+/*void User::checkOut(const string& bookName)
 {
     if (booksOut.size()== 3){
         throw std::runtime_error("you have 3 books checked out");
@@ -16,9 +16,9 @@ void User::checkOut(const string& bookName)
     myLibrary.checkout(myLibrary.findBook(bookName));
     booksOut.push_back(myLibrary.findBook(bookName));
     booksRead.push_back(myLibrary.findBook(bookName));
-}
+}*/
 
-void User::checkIn(const string& bookName)
+/*void User::checkIn(const string& bookName)
 {
     myLibrary.checkin(myLibrary.findBook(bookName));
     int position = -1;
@@ -31,13 +31,13 @@ void User::checkIn(const string& bookName)
         booksOut.at(position) = booksOut.at(booksOut.size()-1);
         booksOut.pop_back();
     }
-}
+}*/
 
 void User::recommendBooks()
 {
 }
 
-void User::logIn()
+/*void User::logIn()
 {
     ifstream inStream;
     string fileName = "../data/";
@@ -51,7 +51,7 @@ void User::logIn()
         booksRead.push_back(myLibrary.findBook(bookName));
         getline(inStream, bookName);
     }
-}
+}*/
 
 void User::logOut()
 {

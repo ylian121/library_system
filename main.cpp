@@ -221,7 +221,7 @@ void printGenre(const string &genre) {
     while (getline(inFS, bookLine)) {
         if (inFS.bad()){
 
-            inFS.close()
+            inFS.close();
             throw std::runtime_error("error reading from books.txt");
 
         }
@@ -244,6 +244,10 @@ void printGenre(const string &genre) {
     }
 
     inFS.close();
+
+}
+
+void editLibrary() {
 
 }
 
@@ -286,29 +290,40 @@ void printLibrary() {
     }
 }
 
-void printUserMenu(string fullName){
+void printUserMenu(User* curruser){
     char input;
-    cout << "Welcome " << fullName << endl;
+    cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
     cout << "Press d to see account debt" << endl;
     cout << "Press b to see all books" << endl;
     cin >> input;
+
+    //if user picks b call function to show all books
     cout << endl;
+
+    if(input == 'b') {
+        printLibrary();
+    }
     //add in necessary functions to call
 }
 
-void printAdminMenu(string fullName){
+
+void printAdminMenu(Admin* currAdmin){
     char input;
-    cout << "Welcome " << fullName << endl;
+    cout << "Welcome " << currAdmin->getName() << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
     cin >> input;
     cout << endl;
-    //add in necessary functions to call
+    
+    if(input == 'y') {
+        editLibrary();
+    }
 }
 
+
 int main() {
-    //Library* newLibrary = new Library();
+    Library* newLibrary = new Library();
     char start;
     bool isUser = false;
     string userOrAdmin;
@@ -371,13 +386,14 @@ int main() {
 
     //login process:
     if (isUser) {
-        //User* currUser = new User(inputUserName, passWord, newLibrary);
-        //currUser->setName(fullName);
-        printLibrary();
+        User* currUser = new User(inputUserName, passWord, newLibrary);
+        currUser->setName(fullName);
+        printUserMenu(currUser);
     }
     else if (!isUser) {
-        //Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
-        //currAdmin->setName(fullName);
+        Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
+        currAdmin->setName(fullName);
+        printAdminMenu(currAdmin);
     }
 
 }
