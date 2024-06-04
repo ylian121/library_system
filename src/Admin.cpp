@@ -8,28 +8,52 @@
 using std::ofstream;
 using std::ifstream;
 using std::cout;
+using std::cin;
 using std::endl;
 
 //admin have access to changes in the library
 //adding/removing books will be from book/library class
 
-/*void Admin::addBooks(const string& bookName){
-    library.addBook(Book(bookName));
+void Admin::addBooks(const string& bookName){
+    Book* newBook = new Book(bookName);
+    myLibrary->addBook(newBook);
+
+    string genreIn;
+    while(true) {
+
+        cout << "Please enter the book's genre(s), one at a time (enter quit when finished): ";
+        cin >> genreIn;
+        cout << endl;
+
+        if (genreIn == "quit") {
+
+            break;
+            
+
+        }
+
+        newBook->addGenre(genreIn);
+
+    }
+
 }
 
 void Admin::removeBook(const string& bookName){
-    library.removeBook(Book(bookName));
+    Book* removedBook = myLibrary->getBook(bookName);
+    myLibrary->remove(removedBook);
 }
 
-void Admin::addGenre(const string& bookGenre){
-    library.addGenre(Book(bookGenre));
+void Admin::addGenre(const string& bookGenre, const string& bookName){
+    Book* currentBook = myLibrary->getBook(bookName);
+    currentBook->addGenre(bookGenre);
 }
 
-void Admin::removeGenre(const string& bookGenre){
-    library.removeGenre(Book(bookGenre));
+void Admin::removeGenre(const string& bookGenre, const string& bookName){
+    Book* currentBook = myLibrary->getBook(bookName);
+    currentBook->removeGenre(bookGenre);
 }
 
-void Admin::logIn(){
+/*void Admin::logIn(){
 
     ifstream inStream;
     string fileName = "../data/";

@@ -8,15 +8,15 @@ using std::endl;
 using std::ofstream;
 using std::ifstream;
 
-/*void User::checkOut(const string& bookName)
+void User::checkOut(const string& bookName)
 {
     if (booksOut.size()== 3){
         throw std::runtime_error("you have 3 books checked out");
     }
-    myLibrary.checkout(myLibrary.findBook(bookName));
-    booksOut.push_back(myLibrary.findBook(bookName));
-    booksRead.push_back(myLibrary.findBook(bookName));
-}*/
+    myLibrary->checkout(myLibrary->getBook(bookName));
+    booksOut.push_back(myLibrary->getBook(bookName));
+    booksRead.push_back(myLibrary->getBook(bookName));
+}
 
 /*void User::checkIn(const string& bookName)
 {
@@ -37,7 +37,7 @@ void User::recommendBooks()
 {
 }
 
-/*void User::logIn()
+void User::logIn()
 {
     ifstream inStream;
     string fileName = "../data/";
@@ -48,10 +48,10 @@ void User::recommendBooks()
     inStream >> junk;
     getline(inStream, bookName);
     while(!inStream.bad()){
-        booksRead.push_back(myLibrary.findBook(bookName));
+        booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);
     }
-}*/
+}
 
 void User::logOut()
 {
