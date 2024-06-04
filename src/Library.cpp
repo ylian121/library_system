@@ -74,7 +74,7 @@ void Library::checkin(const Book& book){
 
 }
 
-bool Library::foundBook(const string& bookName){
+bool Library::bookFound(const string& bookName){
 
     for(int i = 0; i < bookList.size(); ++i){
         if(getBookName(bookList[i]) == bookName){
@@ -97,7 +97,7 @@ book Library::getBook(const string& bookName) {
     }
 
     throw std::runtime_error(bookName + " not found"); //FIXME: handle book not found edge case
-    
+
 }
 
 string Library::getBookName(const Book& book){

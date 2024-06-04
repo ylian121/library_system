@@ -20,7 +20,8 @@ class Library{
     void remove(const Book& book);
     void checkout(const Book& book);
     void checkin(const Book& book);
-    bool findBook(const string& bookName);
+    bool bookFound(const string& bookName);
+    book getBook(const string& bookName);
 
 private:
     //helper function to help find book

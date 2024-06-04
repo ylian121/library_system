@@ -1,5 +1,6 @@
 #include "../header/User.hpp"
 #include "../header/Book.hpp"
+#include "../header/Library.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -14,14 +15,14 @@ void User::checkOut(const string& bookName)
     if (booksOut.size()== 3){
         throw std::runtime_error("you have 3 books checked out");
     }
-    myLibrary->checkout(myLibrary->findBook(bookName));
-    booksOut.push_back(myLibrary->findBook(bookName));
-    booksRead.push_back(myLibrary->findBook(bookName));
+    myLibrary->checkout(myLibrary->getBook(bookName));
+    booksOut.push_back(myLibrary->getBook(bookName));
+    booksRead.push_back(myLibrary->getBook(bookName));
 }
 
 void User::checkIn(const string& bookName)
 {
-    myLibrary->checkin(myLibrary->findBook(bookName));
+    myLibrary->checkin(myLibrary->getBook(bookName));
     int position = -1;
     for(int i = 0; i<booksOut.size(); ++i){
         if(booksOut.at(i).getName() == bookName){
@@ -49,7 +50,7 @@ void User::logIn()
     inStream >> junk;
     getline(inStream, bookName);
     while(!inStream.bad()){
-        booksRead.push_back(myLibrary->findBook(bookName));
+        booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);
     }
 }
