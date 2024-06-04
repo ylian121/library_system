@@ -63,8 +63,8 @@ void User::logOut()
     fileName += username;
     outStream.open(fileName);
     outStream << username << " " << password << " " << name << endl;
-    for(Book currBook: booksRead){
-        outStream << currBook.getName() << endl;
+    for(Book* currBook: booksRead){
+        outStream << currBook->getName() << endl;
     }
 
 }
