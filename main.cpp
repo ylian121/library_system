@@ -3,8 +3,9 @@
 #include <string>
 #include <stdexcept>
 
-#include <Admin.hpp>
-#include <User.hpp>
+#include "header/Admin.hpp"
+#include "header/Library.hpp"
+#include "header/User.hpp"
 
 using std::string;
 using std::cin;
@@ -140,12 +141,14 @@ bool checkExistingUserName(const string &inputUserName) {
 
         if (inputUserName == username) {
 
+            inFS.close();
             return true;
 
         }
 
     }
 
+    inFS.close();
     return false;
 
 }
@@ -164,7 +167,7 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     }
     
     ifstream inFS;
-    string filename = inputUserName + ".txt";
+    string filename = "users/" + inputUserName + ".txt";
 
     inFS.open(filename);
 
@@ -185,9 +188,12 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
     cin >> passWordIn;
     cout << endl;
 
+    inFS.close();
+
     if (passWordIn == passWord) {
 
         cout << "Welcome back " << fullName << "!" << endl;
+        cout << endl;
         return;
 
     }
@@ -199,9 +205,126 @@ void signin(const bool &isUser, string &inputUserName, string &passWord, string 
 
 }
 
-int main() {
-    //Make library object
+void printGenre(const string &genre) {
+    
+    ifstream inFS;
 
+    inFS.open("books.txt");
+    if(!(inFS.is_open())) {
+        throw std::runtime_error("couldn't open books.txt");
+    }
+
+    string bookLine;
+    unsigned int i = 0;
+    bool genreFound = false;
+
+    while (getline(inFS, bookLine)) {
+        if (inFS.bad()){
+
+            inFS.close();
+            throw std::runtime_error("error reading from books.txt");
+
+        }
+
+        if (bookLine.find(genre) != std::string::npos) {
+
+            genreFound = true;
+            ++i;
+
+            cout << i << ". " << bookLine << endl;
+
+        }
+
+    }
+
+    if (!genreFound) {
+
+        cout << "No books found for the genre: " << genre << endl;
+
+    }
+
+    inFS.close();
+
+}
+
+void editLibrary() {
+
+}
+
+void printLibrary() {
+    ifstream inFS;
+
+    inFS.open("books.txt");
+    if(!(inFS.is_open())) {
+        throw std::runtime_error("couldn't open books.txt");
+    }
+
+    cout << "Here is the list of our books available:" << endl;
+    string book;
+    while(getline(inFS, book)) {
+        cout << book << endl;
+        cout << endl;
+    }
+    inFS.close();
+
+    cout << "press g if you want to filter by genre" << endl;
+    cout << "press a to borrow book" << endl;
+
+    char input;
+    if(not(cin >> input)) {
+        throw std::runtime_error("couldn't get input");
+    }
+    if (input == 'g') {
+        cout << "Enter genre" << endl;
+        string genre;
+        cin >> genre;
+
+        printGenre(genre);
+    }
+
+    if (input == 'a') {
+        cout << "Enter title" << endl;
+        string title;
+        cin >> title;
+        //borrow book
+    }
+}
+
+
+void printUserMenu(User* curruser){
+    char input;
+    cout << "Welcome " << curruser->getName() << endl;
+    cout << "Press h to see history" << endl;
+    cout << "Press d to see account debt" << endl;
+    cout << "Press b to see all books" << endl;
+    cin >> input;
+
+    //if user picks b call function to show all books
+    cout << endl;
+
+    if(input == 'b') {
+        printLibrary();
+    }
+    //add in necessary functions to call
+}
+
+
+void printAdminMenu(Admin* currAdmin){
+    char input;
+    cout << "Welcome " << currAdmin->getName() << endl;
+    cout << "Would you like to edit our collection" << endl;
+    cout << "Type y or n" << endl;
+    cin >> adminChoice;
+    cout << endl;
+    
+    if(input == 'y') {
+        editLibrary();
+    }
+}
+
+
+int main() {
+    Library* newLibrary = new Library();
     char start;
     bool isUser = false;
     string userOrAdmin;
@@ -264,15 +387,16 @@ int main() {
 
     //login process:
     if (isUser) {
-
-        User* currUser = new User(inputUserName, passWord, library);
+        User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
 
+        printUserMenu(currUser);
     }
     else if (!isUser) {
-
-        Admin* currAdmin = new Admin(inputUserName, passWord, library);
+        Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
         currAdmin->setName(fullName);
+
+        printAdminMenu(currAdmin);
     }
 
 }

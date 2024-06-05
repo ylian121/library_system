@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-
+#include "Library.hpp"
 using std::string;
 
 class Person{
@@ -10,13 +10,13 @@ class Person{
     string password;
     string name;
  public:
-    Person(){}
-    Person(const string& user, const string& pass): username(user), password(pass), name(""){}
+    Person() : username("default"), password("Default1"){}
+    Person(string user, string pass): username(user), password(pass){}
     string getName(){
         return name;
     }
-    void setName(const string& name){
-        this->name = name;
+    void setName(string name){
+        name = name;
     }
 
 };

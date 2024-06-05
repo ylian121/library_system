@@ -1,3 +1,4 @@
+
 #include "Book.hpp"
 
 #include <stdexcept>
@@ -52,3 +53,4 @@ void Book::checkIn(){
         throw runtime_error("trying to check in a book that has not yet been checked out");
     }
 }
+

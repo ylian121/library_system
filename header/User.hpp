@@ -12,21 +12,23 @@ using std::vector;
 
 class User: public Person{
  private:
-    vector<Book> booksRead;
-    vector<Book> booksOut;
-    Library& myLibrary;
+    vector<Book*> booksRead;
+    vector<Book*> booksOut;
+    Library* myLibrary;
 
  public:
-    User(const string& user,const string& pass, Library& library): myLibrary(library){
+    User(const string& user, const string& pass, Library* library): myLibrary(library){
         this->username = user;
         this->password = pass;
         this->name = "";
-        booksOut = vector<Book>(3);
+        booksOut = vector<Book*>(3);
         booksRead;
     }
     void checkOut(const string& bookName);
     void checkIn(const string& bookName);
     void recommendBooks();
+    void readHistory(); //uses vector booksRead to iterate through all data stored in vector and print each book
+    void printDebt();
     void logIn();
     void logOut();
 

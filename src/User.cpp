@@ -1,10 +1,15 @@
-#include "User.hpp"
-#include "Book.hpp"
+#include "../header/User.hpp"
+#include "../header/Book.hpp"
+
+#include "../header/Library.hpp"
+
+
 
 #include <fstream>
 #include <iostream>
 
 using std::endl;
+using std::cout;
 using std::ofstream;
 using std::ifstream;
 
@@ -13,14 +18,14 @@ void User::checkOut(const string& bookName)
     if (booksOut.size()== 3){
         throw std::runtime_error("you have 3 books checked out");
     }
-    myLibrary.checkOut(myLibrary.findBook(bookName));
-    booksOut.push_back(myLibrary.findBook(bookName));
-    booksRead.push_back(myLibrary.findBook(bookName));
+    myLibrary->checkout(myLibrary->getBook(bookName));
+    booksOut.push_back(myLibrary->getBook(bookName));
+    booksRead.push_back(myLibrary->getBook(bookName));
 }
 
-void User::checkIn(const string& bookName)
+/*void User::checkIn(const string& bookName)
 {
-    myLibrary.checkIn(myLibrary.findBook(bookName));
+    myLibrary->checkin(myLibrary->getBook(bookName));
     int position = -1;
     for(int i = 0; i<booksOut.size(); ++i){
         if(booksOut.at(i).getName() == bookName){
@@ -31,7 +36,7 @@ void User::checkIn(const string& bookName)
         booksOut.at(position) = booksOut.at(booksOut.size()-1);
         booksOut.pop_back();
     }
-}
+}*/
 
 void User::recommendBooks()
 {
@@ -48,7 +53,7 @@ void User::logIn()
     inStream >> junk;
     getline(inStream, bookName);
     while(!inStream.bad()){
-        booksRead.push_back(myLibrary.findBook(bookName));
+        booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);
     }
 }
@@ -63,8 +68,20 @@ void User::logOut()
     fileName += username;
     outStream.open(fileName);
     outStream << username << " " << password << " " << name << endl;
-    for(Book currBook: booksRead){
-        outStream << currBook.getName() << endl;
+    for(Book* currBook: booksRead){
+        outStream << currBook->getName() << endl;
     }
+
+}
+
+void User::readHistory() {
+
+    for (unsigned int i = 0; i < booksRead.size(); ++i) {
+
+        cout << (i+1) << ": " << booksRead.at(i).getName() << endl;
+
+    }
+
+    cout << "-----END OF BOOKS READ-----" << endl;
 
 }
