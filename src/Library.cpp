@@ -98,13 +98,11 @@ Book* Library::getBook(const string& bookName){
 
     for(int i = 0; i < bookList.size(); ++i){
         if(getBookName(bookList[i]) == bookName){
-            return true;
+            return bookList[i];
         }
     }
 
-    cout << "book not found in library" << endl;
-    cout << "check spelling and try again" << endl;
-    return false;
+    throw std::runtime_error("book not found in library"); //FIXME: implement better handling for edge case
 
 }
 

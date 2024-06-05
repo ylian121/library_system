@@ -239,7 +239,7 @@ void printGenre(const string &genre) {
 
     if (!genreFound) {
 
-        cout << "No books found for the genre: " << genre << endl;
+        throw std::runtime_error("no genres could be found");
 
     }
 
