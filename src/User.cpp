@@ -1,10 +1,15 @@
 #include "../header/User.hpp"
 #include "../header/Book.hpp"
 
+#include "../header/Library.hpp"
+
+
+
 #include <fstream>
 #include <iostream>
 
 using std::endl;
+using std::cout;
 using std::ofstream;
 using std::ifstream;
 
@@ -20,7 +25,7 @@ void User::checkOut(const string& bookName)
 
 /*void User::checkIn(const string& bookName)
 {
-    myLibrary.checkin(myLibrary.findBook(bookName));
+    myLibrary->checkin(myLibrary->getBook(bookName));
     int position = -1;
     for(int i = 0; i<booksOut.size(); ++i){
         if(booksOut.at(i).getName() == bookName){
@@ -66,5 +71,17 @@ void User::logOut()
     for(Book* currBook: booksRead){
         outStream << currBook->getName() << endl;
     }
+
+}
+
+void User::readHistory() {
+
+    for (unsigned int i = 0; i < booksRead.size(); ++i) {
+
+        cout << (i+1) << ": " << booksRead.at(i).getName() << endl;
+
+    }
+
+    cout << "-----END OF BOOKS READ-----" << endl;
 
 }

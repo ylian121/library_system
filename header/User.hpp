@@ -27,6 +27,8 @@ class User: public Person{
     void checkOut(const string& bookName);
     void checkIn(const string& bookName);
     void recommendBooks();
+    void readHistory(); //uses vector booksRead to iterate through all data stored in vector and print each book
+    void printDebt();
     void logIn();
     void logOut();
 

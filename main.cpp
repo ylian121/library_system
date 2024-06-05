@@ -259,7 +259,7 @@ void printLibrary() {
         throw std::runtime_error("couldn't open books.txt");
     }
 
-    cout << "Here our all the books you owe" << endl;
+    cout << "Here is the list of our books available:" << endl;
     string book;
     while(getline(inFS, book)) {
         cout << book << endl;
@@ -290,6 +290,7 @@ void printLibrary() {
     }
 }
 
+
 void printUserMenu(User* curruser){
     char input;
     cout << "Welcome " << curruser->getName() << endl;
@@ -313,7 +314,7 @@ void printAdminMenu(Admin* currAdmin){
     cout << "Welcome " << currAdmin->getName() << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
-    cin >> input;
+    cin >> adminChoice;
     cout << endl;
     
     if(input == 'y') {
@@ -388,11 +389,13 @@ int main() {
     if (isUser) {
         User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
+
         printUserMenu(currUser);
     }
     else if (!isUser) {
         Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
         currAdmin->setName(fullName);
+
         printAdminMenu(currAdmin);
     }
 
