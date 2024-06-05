@@ -108,19 +108,6 @@ Book* Library::getBook(const string& bookName){
 
 }
 
-book Library::getBook(const string& bookName) {
-    
-    for(int i = 0; i < bookList.size(); ++i){
-        if(getBookName(bookList[i]) == bookName){
-            return bookList[i];
-        }
-    }
-
-    throw std::runtime_error(bookName + " not found"); //FIXME: handle book not found edge case
-
-}
-
-
 string Library::getBookName(Book* book){
     return book->getName();
 }
