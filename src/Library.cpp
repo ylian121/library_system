@@ -1,7 +1,7 @@
 #include "../header/Book.hpp"
-#include "../header/Library.hpp"
 #include <iostream>
 #include <string.h>
+#include "../header/Library.hpp"
 
 using std::cout;
 using std::endl;
@@ -10,16 +10,16 @@ using std::endl;
 Library::Library(){}
 
 //just push to the back
-void Library::addBook(const Book& book){
+void Library::addBook(Book* book){
     bookList.push_back(book);
 }
 
 //need to find book first and then remove
-void Library::remove(const Book& book){
+void Library::remove(Book *book){
 
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == getBookName(book)){
-            bookList.erase(bookList.begin()+i);
+            delete bookList[i];
             return;
         }
     }
@@ -31,9 +31,11 @@ void Library::remove(const Book& book){
 }
 
 //use checkout and checkin from book class
-void Library::checkout(const Book& book){
+void Library::checkout(Book* book){
 
-    if(!findBook(getBookName(book))){
+
+    if(!foundBook(book->getName())){
+
         cout << "book not found" << endl;
         cout << "nothing to check out" << endl;
         return;
@@ -53,9 +55,11 @@ void Library::checkout(const Book& book){
 }
 
 //use checkout and checkin from book class
-void Library::checkin(const Book& book){
+void Library::checkin(Book* book){
 
-    if(!findBook(getBookName(book))){
+
+    if(!(foundBook(book->getName()))){
+
         cout << "book not found" << endl;
         cout << "nothing to check out" << endl;
         return;
@@ -74,7 +78,23 @@ void Library::checkin(const Book& book){
 
 }
 
-bool Library::bookFound(const string& bookName){
+
+bool Library::foundBook(const string& bookName){
+
+    for(int i=0; i<bookList.size(); ++i){
+        if(getBookName(bookList[i]) == bookName){
+            return true;
+        }
+    }
+
+    cout << "book not found in library" << endl;
+    cout << "check spelling and try again" << endl;
+    return false;
+
+}
+
+
+Book* Library::getBook(const string& bookName){
 
     for(int i = 0; i < bookList.size(); ++i){
         if(getBookName(bookList[i]) == bookName){
@@ -100,6 +120,7 @@ book Library::getBook(const string& bookName) {
 
 }
 
-string Library::getBookName(const Book& book){
-    return book.getName();
+
+string Library::getBookName(Book* book){
+    return book->getName();
 }

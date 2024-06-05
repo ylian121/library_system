@@ -11,8 +11,8 @@ using std::vector;
 
 class Admin : public Person{
  private:
-    //vector<string> book;
-    //vector<string> genre;
+    vector<string> book;
+    vector<string> genre;
     //connects to the library class to manage and edit the library
     //to add and remove books and genres
     //library not written yet, won't work
@@ -22,8 +22,8 @@ class Admin : public Person{
     Admin(string user, string pass, Library* libraryAccess) : myLibrary(libraryAccess){}
     void addBooks(const string& bookName);
     void removeBook(const string& bookName);
-    void addGenre(const string& bookGenre);
-    void removeGenre(const string& bookGenre);
+    void addGenre(const string& bookGenre, const string& bookName);
+    void removeGenre(const string& bookGenre, const string& bookName);
     void logIn();
     void logOut();
 };

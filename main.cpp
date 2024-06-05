@@ -247,6 +247,10 @@ void printGenre(const string &genre) {
 
 }
 
+void editLibrary() {
+
+}
+
 void printLibrary() {
     ifstream inFS;
 
@@ -286,49 +290,38 @@ void printLibrary() {
     }
 }
 
-void printUserMenu(User* currUser, const string fullName){
-    char userChoice;
-    cout << "Welcome " << fullName << endl;
+
+void printUserMenu(User* curruser){
+    char input;
+    cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
     cout << "Press d to see account debt" << endl;
     cout << "Press b to see all books" << endl;
-    cin >> userChoice;
+    cin >> input;
+
+    //if user picks b call function to show all books
     cout << endl;
-    
-    if (userChoice = 'h') {
-        //vector<Book> booksRead;
-        currUser->readHistory();
 
-    }
-    else if (userChoice == 'd') {
-
-        currUser->printDebt();
-
-    }
-    else if (userChoice == 'b') {
-
+    if(input == 'b') {
         printLibrary();
-
     }
-    else {
-
-        throw std::runtime_error("invalid choice");
-
-    }
-
-    return;
-
+    //add in necessary functions to call
 }
 
-void printAdminMenu(Admin* currAdmin, const string fullName){
-    char adminChoice;
-    cout << "Welcome " << fullName << endl;
+
+void printAdminMenu(Admin* currAdmin){
+    char input;
+    cout << "Welcome " << currAdmin->getName() << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
     cin >> adminChoice;
     cout << endl;
-    //add in necessary functions to call
+    
+    if(input == 'y') {
+        editLibrary();
+    }
 }
+
 
 int main() {
     Library* newLibrary = new Library();
@@ -396,11 +389,14 @@ int main() {
     if (isUser) {
         User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
-        printLibrary();
+
+        printUserMenu(currUser);
     }
     else if (!isUser) {
         Admin* currAdmin = new Admin(inputUserName, passWord, newLibrary);
         currAdmin->setName(fullName);
+
+        printAdminMenu(currAdmin);
     }
 
 }

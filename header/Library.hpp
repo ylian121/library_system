@@ -11,21 +11,21 @@ using std::vector;
 
 class Library{
  private:
-    vector<Book> bookList;
-    vector<Book> booksCheckedOut;
+    vector<Book*> bookList;
+    vector<Book*> booksCheckedOut;
 
  public:
     Library();
-    void addBook(const Book& book);
-    void remove(const Book& book);
-    void checkout(const Book& book);
-    void checkin(const Book& book);
-    bool bookFound(const string& bookName);
-    book getBook(const string& bookName);
 
+    void addBook(Book* book);
+    void remove(Book* book);
+    void checkout(Book* book);
+    void checkin(Book* book);
+    Book* getBook(const string& bookName);
+    bool foundBook(const string& bookName);
 private:
     //helper function to help find book
     //use from the book class to find the name
-    string getBookName(const Book& book);
+    string getBookName(Book* book);
 
 };

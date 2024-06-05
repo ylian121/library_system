@@ -1,6 +1,9 @@
 #include "../header/User.hpp"
 #include "../header/Book.hpp"
+
 #include "../header/Library.hpp"
+
+
 
 #include <fstream>
 #include <iostream>
@@ -20,7 +23,7 @@ void User::checkOut(const string& bookName)
     booksRead.push_back(myLibrary->getBook(bookName));
 }
 
-void User::checkIn(const string& bookName)
+/*void User::checkIn(const string& bookName)
 {
     myLibrary->checkin(myLibrary->getBook(bookName));
     int position = -1;
@@ -33,7 +36,7 @@ void User::checkIn(const string& bookName)
         booksOut.at(position) = booksOut.at(booksOut.size()-1);
         booksOut.pop_back();
     }
-}
+}*/
 
 void User::recommendBooks()
 {
@@ -65,8 +68,8 @@ void User::logOut()
     fileName += username;
     outStream.open(fileName);
     outStream << username << " " << password << " " << name << endl;
-    for(Book currBook: booksRead){
-        outStream << currBook.getName() << endl;
+    for(Book* currBook: booksRead){
+        outStream << currBook->getName() << endl;
     }
 
 }

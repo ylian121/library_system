@@ -12,8 +12,8 @@ using std::vector;
 
 class User: public Person{
  private:
-    vector<Book> booksRead;
-    vector<Book> booksOut;
+    vector<Book*> booksRead;
+    vector<Book*> booksOut;
     Library* myLibrary;
 
  public:
@@ -21,7 +21,7 @@ class User: public Person{
         this->username = user;
         this->password = pass;
         this->name = "";
-        booksOut = vector<Book>(3);
+        booksOut = vector<Book*>(3);
         booksRead;
     }
     void checkOut(const string& bookName);
