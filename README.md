@@ -75,19 +75,3 @@ Collapse
 
 
 
-Hello, team!
-
-Let’s use this space to…
-
-Status update:
-
-
-
-
-
-
-
-
-
-
-
