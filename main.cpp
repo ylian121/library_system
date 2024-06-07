@@ -254,6 +254,7 @@ void editLibrary(Library& library, Book genreEdit) {
     cout << "press e to add genres" << endl;
     cout << "press k to remove genres" << endl;
     cout << "press l to go to back to memu" << endl;
+    cout << "press q to quit" << endl;
 
     cin >> userInput;
 
@@ -295,6 +296,9 @@ void editLibrary(Library& library, Book genreEdit) {
         getline(cin, adminName);
         Admin currAdmin(adminName);
         printAdminMenu(Admin* currAdmin);
+    }
+    else if (userInput == 'q'){
+        //quit
     }
 
 }
