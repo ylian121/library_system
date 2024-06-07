@@ -16,14 +16,14 @@ using std::ifstream;
 void User::checkOut(const string& bookName)
 {
     if (booksOut.size()== 3){
-        throw std::runtime_error("you have 3 books checked out");
+        throw std::runtime_error("you already have 3 books checked out (max)");
     }
     myLibrary->checkout(myLibrary->getBook(bookName));
     booksOut.push_back(myLibrary->getBook(bookName));
     booksRead.push_back(myLibrary->getBook(bookName));
 }
 
-/*void User::checkIn(const string& bookName)
+void User::checkIn(const string& bookName)
 {
     myLibrary->checkin(myLibrary->getBook(bookName));
     int position = -1;
@@ -36,7 +36,7 @@ void User::checkOut(const string& bookName)
         booksOut.at(position) = booksOut.at(booksOut.size()-1);
         booksOut.pop_back();
     }
-}*/
+}
 
 void User::recommendBooks()
 {

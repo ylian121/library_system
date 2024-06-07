@@ -16,7 +16,7 @@ class Library{
 
  public:
     Library();
-    libDestructor
+    //libDestructor
     ~Library();
 
     

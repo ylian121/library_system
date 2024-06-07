@@ -95,18 +95,12 @@ void Library::remove(Book *book){
 //use checkout and checkin from book class
 void Library::checkout(Book* book){
 
-
     assert(foundBook(book->getName()));
+    //cout << "book exists, continuing" << endl;
 
-    for(int i=0; i<bookList.size(); ++i){
-        if(getBookName(bookList[i]) == getBookName(book)){
-            bookList[i]->checkOut();
-            booksCheckedOut.push_back(bookList[i]);
-            return;
-        }
-    }
+    book->checkOut();
+    booksCheckedOut.push_back(bookList[i]);
 
-    cout << "failure to check out book" << endl;
     return;
 
 }
@@ -114,18 +108,21 @@ void Library::checkout(Book* book){
 //use checkout and checkin from book class
 void Library::checkin(Book* book){
 
-
     assert(foundBook(book->getName()));
+    //cout << "book exists, continuing" << endl;
+
+    book->checkIn();
 
     for(int i=0; i<bookList.size(); ++i){
+
         if(getBookName(booksCheckedOut[i]) == getBookName(book)){
-            booksCheckedOut[i]->checkIn();
+
             booksCheckedOut.erase(booksCheckedOut.begin()+i);
-            return;
+
         }
+
     }
 
-    cout << "failure to check in book" << endl;
     return;
 
 }
