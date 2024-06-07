@@ -262,43 +262,54 @@ void editLibrary(Library& library, Book genreEdit) {
         throw std::runtime_error("couldn't get input");
     }
 
-    if(userInput == 'a'){
-        //add book
-        //create a new book
-        string bookName;
-        getline(cin, bookName);
-        Book* newBook = new Book(bookName);
-        library.addBook(newBook);
-    }
-    else if (userInput == 'r'){
-        //remove
-        //create book to remove
-        string bookName;
-        getline(cin, bookName);
-        Book* newBook = new Book(bookName);
-        library.removeBook(bookName);
-    }
-    else if (userInput == 'e'){
-        //add genre
-        string genreName;
-        getline(cin, genreName);
-        genreEdit.addGenre(genreName);
-    }
-    else if (userInput == 'k'){
-        //remove genre
-        string genreName;
-        getline(cin, genreName);
-        genreEdit.removeGenre(genreName);
-    }
-    else if (userInput == 'l'){
-        //go to menu
-        string adminName;
-        getline(cin, adminName);
-        Admin currAdmin(adminName);
-        printAdminMenu(Admin* currAdmin);
-    }
-    else if (userInput == 'q'){
-        //quit
+    while(true){
+        if(userInput == 'a'){
+            //add book
+            //create a new book
+            string bookName;
+            getline(cin, bookName);
+            Book* newBook = new Book(bookName);
+            library.addBook(newBook);
+            return;
+        }
+        else if (userInput == 'r'){
+            //remove
+            //create book to remove
+            string bookName;
+            getline(cin, bookName);
+            Book* newBook = new Book(bookName);
+            library.removeBook(bookName);
+            return;
+        }
+        else if (userInput == 'e'){
+            //add genre
+            string genreName;
+            getline(cin, genreName);
+            genreEdit.addGenre(genreName);
+            return;
+        }
+        else if (userInput == 'k'){
+            //remove genre
+            string genreName;
+            getline(cin, genreName);
+            genreEdit.removeGenre(genreName);
+            return;
+        }
+        else if (userInput == 'l'){
+            //go to menu
+            string adminName;
+            getline(cin, adminName);
+            Admin currAdmin(adminName);
+            printAdminMenu(Admin* currAdmin);
+            return;
+        }
+        else if (userInput == 'q'){
+            //quit
+            return;
+        }
+        else{
+            cout << "not a valid input option, please try again" << endl;
+        }
     }
 
 }
