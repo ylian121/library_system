@@ -253,7 +253,7 @@ void editLibrary(Library& library, Book genreEdit) {
     cout << "press r to remove books" << endl;
     cout << "press e to add genres" << endl;
     cout << "press k to remove genres" << endl;
-    cout << "press l to go to library" << endl;
+    cout << "press l to go to back to memu" << endl;
 
     cin >> userInput;
 
@@ -283,7 +283,11 @@ void editLibrary(Library& library, Book genreEdit) {
         genreEdit.removeGenre();
     }
     else if (userInput == 'l'){
-        //go to lib
+        //go to menu
+        string adminName;
+        getline(cin, adminName);
+        Admin currAdmin(adminName);
+        printAdminMenu(Admin* currAdmin);
     }
 
 }
