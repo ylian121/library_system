@@ -78,7 +78,7 @@ void User::readHistory() {
 
     for (unsigned int i = 0; i < booksRead.size(); ++i) {
 
-        cout << (i+1) << ": " << booksRead.at(i).getName() << endl;
+        cout << (i+1) << ": " << booksRead.at(i)->getName() << endl;
 
     }
 

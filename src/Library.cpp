@@ -1,7 +1,10 @@
 #include "../header/Book.hpp"
 #include <iostream>
 #include <string.h>
+#include <stdexcept>
 #include "../header/Library.hpp"
+
+#include <cassert>
 
 using std::cout;
 using std::endl;
@@ -20,13 +23,14 @@ void Library::remove(Book *book){
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == getBookName(book)){
             delete bookList[i];
+            for(unsigned j = i+1; j<bookList.size(); ++j){ // need to actually remove the book from the library otherwise there will be a dangleing pointer in the vector
+                bookList.at(j-1) = bookList.at(j);
+            }
+            bookList.pop_back();
             return;
         }
     }
-
-    cout << "book does not exist in library" << endl;
-    cout << "check spelling and try again" << endl;
-    return;
+    throw std::runtime_error("Trying to remove a book that is not in the library");
 
 }
 
@@ -34,16 +38,11 @@ void Library::remove(Book *book){
 void Library::checkout(Book* book){
 
 
-    if(!foundBook(book->getName())){
-
-        cout << "book not found" << endl;
-        cout << "nothing to check out" << endl;
-        return;
-    }
+    assert(foundBook(book->getName()));
 
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(bookList[i]) == getBookName(book)){
-            //book.checkin();
+            bookList[i]->checkOut();
             booksCheckedOut.push_back(bookList[i]);
             return;
         }
@@ -58,16 +57,11 @@ void Library::checkout(Book* book){
 void Library::checkin(Book* book){
 
 
-    if(!(foundBook(book->getName()))){
-
-        cout << "book not found" << endl;
-        cout << "nothing to check out" << endl;
-        return;
-    }
+    assert(foundBook(book->getName()));
 
     for(int i=0; i<bookList.size(); ++i){
         if(getBookName(booksCheckedOut[i]) == getBookName(book)){
-            //book.checkin();
+            booksCheckedOut[i]->checkIn();
             booksCheckedOut.erase(booksCheckedOut.begin()+i);
             return;
         }
@@ -75,21 +69,6 @@ void Library::checkin(Book* book){
 
     cout << "failure to check in book" << endl;
     return;
-
-}
-
-
-bool Library::foundBook(const string& bookName){
-
-    for(int i=0; i<bookList.size(); ++i){
-        if(getBookName(bookList[i]) == bookName){
-            return true;
-        }
-    }
-
-    cout << "book not found in library" << endl;
-    cout << "check spelling and try again" << endl;
-    return false;
 
 }
 
@@ -106,6 +85,19 @@ Book* Library::getBook(const string& bookName){
 
 }
 
-string Library::getBookName(Book* book){
+
+bool Library::foundBook(const string& bookName) const{
+
+    for(int i=0; i<bookList.size(); ++i){
+        if(getBookName(bookList[i]) == bookName){
+            return true;
+        }
+    }
+    return false;
+
+}
+
+
+string Library::getBookName(Book* book) const{
     return book->getName();
 }

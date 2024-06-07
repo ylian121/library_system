@@ -1,6 +1,6 @@
 #include "../header/Book.hpp"
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 TEST(bookTests, getNameTest){
     string name = "This is the name";
