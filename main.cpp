@@ -379,16 +379,19 @@ void printUserMenu(User* curruser, User user){
         throw std::runtime_error("couldn't get input");
     }
 
-    if(userInput == 'b') {
-        printLibrary();
+    while(true){
+        if(userInput == 'b') {
+            printLibrary();
+            return;
+        }
+        else if(userInput == 'h') {
+            user.readHistory();
+            return;
+        }
+        else{
+            cout << "not a valid input option, please try again" << endl;
+        }
     }
-    else if(userInput == 'h') {
-        user.readHistory();
-    }
-    else{
-        cout << "not a valid input option, please try again" << endl;
-    }
-    //add in necessary functions to call
 }
 
 
@@ -404,16 +407,18 @@ void printAdminMenu(Admin* currAdmin){
         throw std::runtime_error("couldn't get input");
     }
     
-    if(adminChoice == 'y') {
-        editLibrary(library, genreEdit, currAdmin);
-        return;
-    }
-    else if(adminChoice == 'n'){
-        cout << "admin doesn't want to edit collection" << endl;
-        return;
-    }
-    else{
-        cout << "not a valid input option, please try again" << endl;
+    while(true){
+        if(adminChoice == 'y') {
+            editLibrary(library, genreEdit, currAdmin);
+            return;
+        }
+        else if(adminChoice == 'n'){
+            cout << "admin doesn't want to edit collection" << endl;
+            return;
+        }
+        else{
+            cout << "not a valid input option, please try again" << endl;
+        }
     }
 }
 
