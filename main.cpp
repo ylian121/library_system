@@ -272,8 +272,10 @@ void editLibrary(Library& library, Book genreEdit) {
     else if (userInput == 'r'){
         //remove
         //create book to remove
-        Book* bookToRemove = new Book(title, author, year);
-        library.removeBook(bookToRemove);
+        string bookName;
+        getline(cin, bookName);
+        Book* newBook = new Book(bookName);
+        library.removeBook(bookName);
     }
     else if (userInput == 'e'){
         //add genre
