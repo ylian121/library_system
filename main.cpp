@@ -364,7 +364,7 @@ void printLibrary() {
 }
 
 
-void printUserMenu(User* curruser, User user;){
+void printUserMenu(User* curruser, User user){
     char userInput;
     cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
