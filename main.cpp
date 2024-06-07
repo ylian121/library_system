@@ -365,21 +365,28 @@ void printLibrary() {
 
 
 void printUserMenu(User* curruser, User user;){
-    char input;
+    char userInput;
     cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
     cout << "Press b to see all books" << endl;
     // cout << "Press q to log out" << endl;  FIXME: find out when to offer user to log out
-    cin >> input;
+    cin >> userInput;
 
     //if user picks b call function to show all books
     cout << endl;
 
-    if(input == 'b') {
+    if(not(cin >> userInput)) {
+        throw std::runtime_error("couldn't get input");
+    }
+
+    if(userInput == 'b') {
         printLibrary();
     }
-    else if(input == 'h') {
+    else if(userInput == 'h') {
         user.readHistory();
+    }
+    else{
+        cout << "not a valid input option, please try again" << endl;
     }
     //add in necessary functions to call
 }
