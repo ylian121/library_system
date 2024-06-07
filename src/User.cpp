@@ -60,7 +60,7 @@ void User::logIn()
     getline(inStream, junk); //password
     getline(inStream, junk); //name
 
-    getline(inStream, bookName); //FIXME: getline obtains whole line and not just book name 
+    getline(inStream, bookName);
     while(!inStream.bad() && !inStream.eof()){
         booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);

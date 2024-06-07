@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-#inlude <stdexcept>
+#include <stdexcept>
 
 using std::cout;
 using std::endl;
