@@ -60,7 +60,6 @@
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
 > Our project is tested and validated with unit tests for each class and each function within each class. Our unit tests are testing to see if each function work as intended with expecting certain values, expecting true or false and with the other different types of expects for unit tests. Most of the unit tests are passing to ensure the correctness of each function and that is how our project is tested and validated.
  
 Collapse
