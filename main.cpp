@@ -263,6 +263,8 @@ void editLibrary() {
 
     if(userInput == 'a'){
         //add book
+        Book* newBook = new Book(title, author, year);
+        library.addBook(newBook);
     }
     else if (userInput == 'r'){
         //remove
