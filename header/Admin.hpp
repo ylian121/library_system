@@ -12,7 +12,6 @@ using std::vector;
 class Admin : public Person{
  private:
     vector<string> book;
-    vector<string> genre;
     //connects to the library class to manage and edit the library
     //to add and remove books and genres
     //library not written yet, won't work

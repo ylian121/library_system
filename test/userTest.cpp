@@ -18,6 +18,7 @@ TEST(UserTests, logInTest){
     string name = "Jimmy";
     Library myLib;
     User myUser(username, password, &myLib);
+    myUser.setName(name);
     EXPECT_NO_THROW(myUser.logIn());
 }
 
@@ -27,6 +28,7 @@ TEST(UserTests, badUsername){
     string name = "Jimmy";
     Library myLib;
     User myUser(username, password, &myLib);
+    myUser.setName(name);
     EXPECT_DEATH(myUser.logIn(), "couldn't open user file");
 }
 
@@ -36,6 +38,7 @@ TEST(UserTests, logOut){
     string name = "Jimmy";
     Library myLib;
     User myUser(username, password, &myLib);
+    myUser.setName(name);
     myUser.logIn();
     EXPECT_NO_THROW(myUser.logOut());
 }
@@ -48,6 +51,7 @@ TEST(UserTests, checkOutNIn){
     Library myLib;
     myLib.addBook(&oneBook);
     User myUser(username, password, &myLib);
+    myUser.setName(name);
     myUser.logIn();
     EXPECT_NO_THROW(myUser.checkOut(oneBook.getName()));
     EXPECT_TRUE(oneBook.isCheckedOut());
@@ -63,6 +67,7 @@ TEST(UserTests, readHistory){
     Library myLib;
     myLib.addBook(&oneBook);
     User myUser(username, password, &myLib);
+    myUser.setName(name);
     myUser.logIn();
     EXPECT_EQ(myUser.readHistory(), "1: Name of The Book\n-----END OF BOOKS READ-----\n");
     myUser.logOut();
