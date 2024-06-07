@@ -16,6 +16,9 @@ class Library{
 
  public:
     Library();
+    libDestructor
+    ~Library();
+
     
     void loadBooksFromFile(const string& filename);
     void addBook(Book* book);

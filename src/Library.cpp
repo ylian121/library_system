@@ -1,5 +1,6 @@
 #include "../header/Book.hpp"
 #include "../header/Library.hpp"
+#include "Library.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -58,6 +59,15 @@ void Library::loadBooksFromFile(const string& filename) {
 
         inFS.close();
     }
+}
+
+Library::~Library()
+{
+    for (Book* currBook: bookList){
+        delete currBook;
+        currBook = nullptr;
+    }
+    
 }
 
 //just push to the back
