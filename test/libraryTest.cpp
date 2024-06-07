@@ -49,16 +49,6 @@ TEST(libraryTests, checkInTest){
     EXPECT_FALSE(myBook.isCheckedOut());
 }
 
-TEST(libraryTests, checkInTest){
-    string anyName = "some name";
-    Book myBook(anyName);
-    Library lib;
-    lib.addBook(&myBook);
-    lib.checkout(&myBook);
-    lib.checkin(&myBook);
-    EXPECT_FALSE(myBook.isCheckedOut());
-}
-
 TEST(libraryTests, getBookTest){
     string anyName = "some name";
     Book myBook(anyName);
