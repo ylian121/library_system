@@ -465,16 +465,9 @@ int main() {
 
     cout << "please enter your name" << endl;
     cin >> fullName;
-    
-   cout << "please enter your password. Password must start with an upper case letter and has a number." << endl;
-    cin >> passWord;
 
 
     if(signinFirstTime == "yes") {
-
-        cout << "please enter your name" << endl;
-        cin >> fullName;
-        cout << endl;
         
         cout << "please enter your password" << endl;
         cin >> passWord;

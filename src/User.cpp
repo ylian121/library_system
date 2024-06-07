@@ -46,7 +46,7 @@ void User::recommendBooks()
 void User::logIn()
 {
     ifstream inFS;
-    string fileName = "../users/";
+    string fileName = "./users/";
     fileName = fileName + username + ".txt";
     inFS.open(fileName);
 
