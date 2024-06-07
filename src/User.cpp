@@ -84,7 +84,7 @@ void User::logOut()
     }
 
     ofstream outFS;
-    string fileName = "../users/";
+    string fileName = "./users/";
     fileName = fileName + username + ".txt";
     outFS.open(fileName);
 
