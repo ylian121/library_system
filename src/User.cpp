@@ -18,9 +18,17 @@ void User::checkOut(const string& bookName)
     if (booksOut.size()== 3){
         throw std::runtime_error("you already have 3 books checked out (max)");
     }
-    myLibrary->checkout(myLibrary->getBook(bookName));
-    booksOut.push_back(myLibrary->getBook(bookName));
-    booksRead.push_back(myLibrary->getBook(bookName));
+
+    if (!((myLibrary->getBook(bookName))->isCheckedOut)) {
+
+        myLibrary->checkout(myLibrary->getBook(bookName));
+        booksOut.push_back(myLibrary->getBook(bookName));
+        booksRead.push_back(myLibrary->getBook(bookName));
+
+        return;
+
+    }
+
 }
 
 void User::checkIn(const string& bookName)

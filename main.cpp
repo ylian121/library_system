@@ -324,7 +324,8 @@ void editLibrary(Book genreEdit, Admin* currAdmin) {
 
 }
 
-void printLibrary() {
+void printLibrary(User* currUser) {
+
     ifstream inFS;
 
     inFS.open("books.txt");
@@ -341,57 +342,78 @@ void printLibrary() {
     inFS.close();
 
     cout << "press g if you want to filter by genre" << endl;
-    cout << "press a to borrow book" << endl;
+    cout << "press r to return" << endl;
 
     char input;
     if(not(cin >> input)) {
         throw std::runtime_error("couldn't get input");
     }
     if (input == 'g') {
-        cout << "Enter genre" << endl;
+
         string genre;
+        cout << "Enter genre: ";
         cin >> genre;
+        cout << endl;
 
         printGenre(genre);
     }
-
-    if (input == 'a') {
-        cout << "Enter title" << endl;
-        string title;
-        cin >> title;
-        //FIXME:borrow book
+    if (input == 'r') {
+            
+        return;
+        
     }
+
 }
 
+void borrowBook(User* currUser) {
 
-void printUserMenu(User* curruser, User user){
-    char userInput;
-    cout << "Welcome " << curruser->getName() << endl;
-    cout << "Press h to see history" << endl;
-    cout << "Press b to see all books" << endl;
-    // cout << "Press q to log out" << endl;  FIXME: find out when to offer user to log out
-    cin >> userInput;
-
-    //if user picks b call function to show all books
+    string bookName;
+    cout << "Enter the book name: ";
+    cin >> bookName;
     cout << endl;
+    currUser->checkOut(bookName);
 
-    if(not(cin >> userInput)) {
-        throw std::runtime_error("couldn't get input");
-    }
+    cout << bookName << " successfully checked out." << endl;
 
-    while(true){
+}
+
+void printUserMenu(User* currUser){
+    char userInput;
+    cout << "Welcome " << currUser->getName() << endl;
+
+    while(true) {
+
+        cout << "Press h to see history" << endl;
+        cout << "Press b to see all books" << endl;
+        cout << "Press c to check out a book" << endl;
+        // cout << "Press q to log out" << endl;  FIXME: find out when to offer user to log out
+        cin >> userInput;
+
+        //if user picks b call function to show all books
+        cout << endl;
+
+        if(not(cin >> userInput)) {
+            throw std::runtime_error("couldn't get input");
+        }
+
         if(userInput == 'b') {
-            printLibrary();
+            printLibrary(currUser);
             return;
         }
         else if(userInput == 'h') {
-            cout << user.readHistory();
+            cout << currUser->readHistory();
+            return;
+        }
+        else if(userInput == 'c') {
+            borrowBook(currUser);
             return;
         }
         else{
             cout << "not a valid input option, please try again" << endl;
         }
+
     }
+
 }
 
 
