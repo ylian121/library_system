@@ -40,6 +40,7 @@ void User::checkIn(const string& bookName)
 
 void User::recommendBooks()
 {
+    /*FIXME: for future expansion and development*/
 }
 
 void User::logIn()
@@ -54,10 +55,14 @@ void User::logIn()
     }
 
     string junk;
+    string currPass;
     string bookName;
     
     getline(inFS, junk); //username
-    getline(inFS, junk); //password
+    getline(inFS, currPass); //password
+    if(currPass!=password){
+        throw std::runtime_error("we have a problem");
+    }
     getline(inFS, junk); //name
 
     getline(inFS, bookName);
@@ -100,14 +105,16 @@ void User::logOut()
 
 }
 
-void User::readHistory() {
+const string& User::readHistory() {
+    string out;
 
     for (unsigned int i = 0; i < booksRead.size(); ++i) {
 
-        cout << (i+1) << ": " << booksRead.at(i)->getName() << endl;
+        out = out + std::to_string(i+1) + ": " + booksRead.at(i)->getName() + '\n';
 
     }
 
-    cout << "-----END OF BOOKS READ-----" << endl;
-
+    out = out + "-----END OF BOOKS READ-----" + '\n';
+    
+    return out;
 }
