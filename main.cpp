@@ -391,7 +391,7 @@ void printAdminMenu(Admin* currAdmin){
     cout << endl;
     
     if(adminChoice == 'y') {
-        editLibrary();
+        editLibrary(library, genreEdit, currAdmin);
     }
 }
 
