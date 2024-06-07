@@ -45,14 +45,23 @@ void User::recommendBooks()
 void User::logIn()
 {
     ifstream inStream;
-    string fileName = "../data/";
-    fileName += username;
+    string fileName = "../users/";
+    fileName = fileName + username + ".txt";
     inStream.open(fileName);
+
+    if(!(inStream.is_open())) {
+        throw std::runtime_error("couldn't open user file");
+    }
+
     string junk;
     string bookName;
-    inStream >> junk;
+    
+    getline(inStream, junk); //username
+    getline(inStream, junk); //password
+    getline(inStream, junk); //name
+
     getline(inStream, bookName);
-    while(!inStream.bad()){
+    while(!inStream.bad() && !inStream.eof()){
         booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);
     }
@@ -61,15 +70,27 @@ void User::logIn()
 void User::logOut()
 {
     if(booksOut.size()>0){
+
         throw std::runtime_error("books are still checked out");
+
     }
-    ofstream outStream;
-    string fileName = "../data/";
-    fileName += username;
-    outStream.open(fileName);
-    outStream << username << " " << password << " " << name << endl;
+
+    ofstream outFS;
+    string fileName = "../users/";
+    fileName = fileName + username + ".txt";
+    outFS.open(fileName);
+
+    if (!(outFS.is_open())) {
+        throw std::runtime_error("couldn't open user file for writing");
+    }
+
+
+    outFS << this->username << std::endl << this->password << std::endl << this->name << std::endl;
+
     for(Book* currBook: booksRead){
-        outStream << currBook->getName() << endl;
+
+        outFS << currBook->getName() << std::endl;
+
     }
 
 }
@@ -78,7 +99,7 @@ void User::readHistory() {
 
     for (unsigned int i = 0; i < booksRead.size(); ++i) {
 
-        cout << (i+1) << ": " << booksRead.at(i).getName() << endl;
+        cout << (i+1) << ": " << booksRead.at(i)->getName() << endl;
 
     }
 

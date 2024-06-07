@@ -247,7 +247,85 @@ void printGenre(const string &genre) {
 
 }
 
-void editLibrary() {
+void editLibrary(Library& library, Book genreEdit) {
+    char userInput;
+    cout << "press a to add books" << endl;
+    cout << "press r to remove books" << endl;
+    cout << "press e to add genres" << endl;
+    cout << "press k to remove genres" << endl;
+    cout << "press l to go to back to memu" << endl;
+    cout << "press q to quit" << endl;
+
+    cin >> userInput;
+
+    if(not(cin >> userInput)) {
+        throw std::runtime_error("couldn't get input");
+    }
+
+    while(true){
+        if(userInput == 'a'){
+            //add book
+            //create a new book
+            string bookName;
+            getline(cin, bookName);
+            if (!getline(cin, bookName)) {
+                throw runtime_error("Couldn't get input.");
+            }
+            Book* newBook = new Book(bookName);
+            library.addBook(newBook);
+            return;
+        }
+        else if (userInput == 'r'){
+            //remove
+            //create book to remove
+            string bookName;
+            getline(cin, bookName);
+            if (!getline(cin, bookName)) {
+                throw runtime_error("Couldn't get input.");
+            }
+            Book* newBook = new Book(bookName);
+            library.removeBook(bookName);
+            return;
+        }
+        else if (userInput == 'e'){
+            //add genre
+            string genreName;
+            getline(cin, genreName);
+            if (!getline(cin, genreName)) {
+                throw runtime_error("Couldn't get input.");
+            }
+            genreEdit.addGenre(genreName);
+            return;
+        }
+        else if (userInput == 'k'){
+            //remove genre
+            string genreName;
+            getline(cin, genreName);
+            if (!getline(cin, genreName)) {
+                throw runtime_error("Couldn't get input.");
+            }
+            genreEdit.removeGenre(genreName);
+            return;
+        }
+        else if (userInput == 'l'){
+            //go to menu
+            string adminName;
+            getline(cin, adminName);
+            if (!getline(cin, adminName)) {
+                throw runtime_error("Couldn't get input.");
+            }
+            Admin currAdmin(adminName);
+            printAdminMenu(Admin* currAdmin);
+            return;
+        }
+        else if (userInput == 'q'){
+            //quit
+            return;
+        }
+        else{
+            cout << "not a valid input option, please try again" << endl;
+        }
+    }
 
 }
 
@@ -295,8 +373,8 @@ void printUserMenu(User* curruser){
     char input;
     cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
-    cout << "Press d to see account debt" << endl;
     cout << "Press b to see all books" << endl;
+    // cout << "Press q to log out" << endl;  FIXME: find out when to offer user to log out
     cin >> input;
 
     //if user picks b call function to show all books
@@ -310,14 +388,14 @@ void printUserMenu(User* curruser){
 
 
 void printAdminMenu(Admin* currAdmin){
-    char input;
+    char adminChoice;
     cout << "Welcome " << currAdmin->getName() << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
     cin >> adminChoice;
     cout << endl;
     
-    if(input == 'y') {
+    if(adminChoice == 'y') {
         editLibrary();
     }
 }
@@ -389,6 +467,8 @@ int main() {
     if (isUser) {
         User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
+
+        currUser->logIn();
 
         printUserMenu(currUser);
     }
