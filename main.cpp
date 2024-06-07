@@ -310,7 +310,7 @@ void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
         }
         else if (userInput == 'l'){
             //go to menu
-            printAdminMenu(Admin* currAdmin);
+            printAdminMenu(currAdmin);
             return;
         }
         else if (userInput == 'q'){
