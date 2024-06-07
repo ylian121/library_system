@@ -27,7 +27,7 @@ void Library::loadBooksFromFile(const string& filename) {
         string lineIn;
         while (std::getline(inFS, lineIn)) {
 
-            std::istringstream stream(line);
+            std::istringstream stream(lineIn);
             string bookTitle;
             string by;
             string author;
