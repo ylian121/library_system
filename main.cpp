@@ -248,7 +248,16 @@ void printGenre(const string &genre) {
 }
 
 void editLibrary() {
+    vector<Book> library;
+    char userInput;
+    cout << "press a to add books" << endl;
+    cout << "press r to remove books" << endl;
+    cout << "press e to edit genres" << endl;
+    cout << "press l to go to library" << endl;
 
+    if(not(cin >> userInput)) {
+        throw std::runtime_error("couldn't get input");
+    }
 }
 
 void printLibrary() {
