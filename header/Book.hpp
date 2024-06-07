@@ -17,6 +17,9 @@ public:
     {
         return this->name;
     }
+    bool isCheckedOut(){
+        return checkedOut;
+    }
     bool containsGenre(const string& genre) const;
     void addGenre(const string& genre);
     void removeGenre(const string& genre);
