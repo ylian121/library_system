@@ -99,7 +99,7 @@ void Library::checkout(Book* book){
     //cout << "book exists, continuing" << endl;
 
     book->checkOut();
-    booksCheckedOut.push_back(bookList[i]);
+    booksCheckedOut.push_back(book);
 
     return;
 

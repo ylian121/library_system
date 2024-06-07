@@ -28,7 +28,7 @@ void User::checkIn(const string& bookName)
     myLibrary->checkin(myLibrary->getBook(bookName));
     int position = -1;
     for(int i = 0; i<booksOut.size(); ++i){
-        if(booksOut.at(i).getName() == bookName){
+        if(booksOut.at(i)->getName() == bookName){
             position = i;
         }
     }
@@ -49,7 +49,7 @@ void User::logIn()
     fileName = fileName + username + ".txt";
     inFS.open(fileName);
 
-    if(!(inStream.is_open())) {
+    if(!(inFS.is_open())) {
         throw std::runtime_error("couldn't open user file");
     }
 

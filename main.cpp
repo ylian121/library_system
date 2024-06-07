@@ -12,6 +12,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::ifstream;
+using std::runtime_error;
 
 
 void checkSameUserName(string &inputUserName) {
@@ -284,7 +285,7 @@ void editLibrary(Library& library, Book genreEdit) {
                 throw runtime_error("Couldn't get input.");
             }
             Book* newBook = new Book(bookName);
-            library.removeBook(bookName);
+            library.remove(newBook);
             return;
         }
         else if (userInput == 'e'){
