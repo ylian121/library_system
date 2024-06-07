@@ -35,7 +35,7 @@ void Library::loadBooksFromFile(const string& filename) {
 
             std::getline(stream, bookTitle, ' ');
             std::getline(stream, by, ' ');
-            std::getline(stream, bookTitle, ' ');
+            std::getline(stream, author, ' ');
             std::getline(stream, genres, ' ');
 
             Book* currBook = new Book(bookTitle);
