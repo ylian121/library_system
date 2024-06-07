@@ -295,8 +295,8 @@ void printUserMenu(User* curruser){
     char input;
     cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
-    cout << "Press d to see account debt" << endl;
     cout << "Press b to see all books" << endl;
+    // cout << "Press q to log out" << endl;  FIXME: find out when to offer user to log out
     cin >> input;
 
     //if user picks b call function to show all books
@@ -389,6 +389,8 @@ int main() {
     if (isUser) {
         User* currUser = new User(inputUserName, passWord, newLibrary);
         currUser->setName(fullName);
+
+        currUser->logIn();
 
         printUserMenu(currUser);
     }
