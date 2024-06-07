@@ -392,6 +392,11 @@ void printAdminMenu(Admin* currAdmin){
     
     if(adminChoice == 'y') {
         editLibrary(library, genreEdit, currAdmin);
+        return;
+    }
+    else if(adminChoice == 'n'){
+        cout << "admin doesn't want to edit collection" << endl;
+        return;
     }
 }
 
