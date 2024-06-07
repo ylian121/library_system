@@ -2,12 +2,22 @@
 #include <iostream>
 #include <string.h>
 #include "../header/Library.hpp"
+#include "Library.hpp"
 
 using std::cout;
 using std::endl;
 
 
 Library::Library(){}
+
+Library::~Library()
+{
+    for (Book* currBook: bookList){
+        delete currBook;
+        currBook = nullptr;
+    }
+    
+}
 
 //just push to the back
 void Library::addBook(Book* book){

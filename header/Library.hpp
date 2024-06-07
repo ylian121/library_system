@@ -16,7 +16,7 @@ class Library{
 
  public:
     Library();
-
+    ~Library();
     void addBook(Book* book);
     void remove(Book* book);
     void checkout(Book* book);
