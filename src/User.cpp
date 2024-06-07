@@ -45,14 +45,23 @@ void User::recommendBooks()
 void User::logIn()
 {
     ifstream inStream;
-    string fileName = "../data/";
-    fileName += username;
+    string fileName = "../users/";
+    fileName = fileName + username + ".txt";
     inStream.open(fileName);
+
+    if(!(inStream.is_open())) {
+        throw std::runtime_error("couldn't open user file");
+    }
+
     string junk;
     string bookName;
-    inStream >> junk;
-    getline(inStream, bookName);
-    while(!inStream.bad()){
+    
+    getline(inStream, junk); //username
+    getline(inStream, junk); //password
+    getline(inStream, junk); //name
+
+    getline(inStream, bookName); //FIXME: getline obtains whole line and not just book name 
+    while(!inStream.bad() && !inStream.eof()){
         booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);
     }
@@ -64,10 +73,10 @@ void User::logOut()
         throw std::runtime_error("books are still checked out");
     }
     ofstream outStream;
-    string fileName = "../data/";
-    fileName += username;
+    string fileName = "../users/";
+    fileName = fileName + username + ".txt";
     outStream.open(fileName);
-    outStream << username << " " << password << " " << name << endl;
+    //outStream << username << " " << password << " " << name << endl; FIXME: find what this is doing?
     for(Book* currBook: booksRead){
         outStream << currBook->getName() << endl;
     }
