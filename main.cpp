@@ -268,6 +268,9 @@ void editLibrary(Library& library, Book genreEdit) {
             //create a new book
             string bookName;
             getline(cin, bookName);
+            if (!getline(cin, bookName)) {
+                throw runtime_error("Couldn't get input.");
+            }
             Book* newBook = new Book(bookName);
             library.addBook(newBook);
             return;
@@ -277,6 +280,9 @@ void editLibrary(Library& library, Book genreEdit) {
             //create book to remove
             string bookName;
             getline(cin, bookName);
+            if (!getline(cin, bookName)) {
+                throw runtime_error("Couldn't get input.");
+            }
             Book* newBook = new Book(bookName);
             library.removeBook(bookName);
             return;
@@ -285,6 +291,9 @@ void editLibrary(Library& library, Book genreEdit) {
             //add genre
             string genreName;
             getline(cin, genreName);
+            if (!getline(cin, genreName)) {
+                throw runtime_error("Couldn't get input.");
+            }
             genreEdit.addGenre(genreName);
             return;
         }
@@ -292,6 +301,9 @@ void editLibrary(Library& library, Book genreEdit) {
             //remove genre
             string genreName;
             getline(cin, genreName);
+            if (!getline(cin, genreName)) {
+                throw runtime_error("Couldn't get input.");
+            }
             genreEdit.removeGenre(genreName);
             return;
         }
@@ -299,6 +311,9 @@ void editLibrary(Library& library, Book genreEdit) {
             //go to menu
             string adminName;
             getline(cin, adminName);
+            if (!getline(cin, adminName)) {
+                throw runtime_error("Couldn't get input.");
+            }
             Admin currAdmin(adminName);
             printAdminMenu(Admin* currAdmin);
             return;
