@@ -252,20 +252,22 @@ void printGenre(const string &genre) {
 
 void editLibrary(Admin* currAdmin) {
     char userInput;
-    cout << "press a to add books" << endl;
-    cout << "press r to remove books" << endl;
-    cout << "press e to add genres" << endl;
-    cout << "press k to remove genres" << endl;
-    cout << "press l to go to back to memu" << endl;
-    cout << "press q to quit" << endl;
 
-    cin >> userInput;
+    while(true) {
 
-    if(not(cin >> userInput)) {
-        throw std::runtime_error("couldn't get input");
-    }
+        cout << "press a to add books" << endl;
+        cout << "press r to remove books" << endl;
+        cout << "press e to add genres" << endl;
+        cout << "press k to remove genres" << endl;
+        cout << "press l to go to back to memu" << endl;
+        cout << "press q to quit" << endl;
 
-    while(true){
+        cin >> userInput;
+
+        if(not(cin >> userInput)) {
+            throw std::runtime_error("couldn't get input");
+        }
+
         if(userInput == 'a'){
             //add book
             //create a new book
@@ -293,7 +295,8 @@ void editLibrary(Admin* currAdmin) {
             cout << "Enter the name of the book:" <<endl;
             string bookName;
             getline(cin, bookName);
-            cout << "Enter the gemre to add:" <<endl;
+            cout << "Enter the genre to add:" <<endl;
+
             string genreName;
             getline(cin, genreName);
             if (!getline(cin, genreName)) {
@@ -323,12 +326,14 @@ void editLibrary(Admin* currAdmin) {
         }
         else if (userInput == 'q'){
             //quit
-            return;
+            break;;
         }
         else{
             cout << "not a valid input option, please try again" << endl;
         }
     }
+
+    return;
 
 }
 
@@ -348,90 +353,129 @@ void printLibrary() {
     }
     inFS.close();
 
-    cout << "press g if you want to filter by genre" << endl;
-    cout << "press a to borrow book" << endl;
+    while(true) {
 
-    char input;
-    if(not(cin >> input)) {
-        throw std::runtime_error("couldn't get input");
-    }
-    if (input == 'g') {
-        cout << "Enter genre" << endl;
-        string genre;
-        cin >> genre;
+        cout << "press g if you want to filter by genre" << endl;
+        cout << "press q to return" << endl;
 
-        printGenre(genre);
-    }
+        char input;
+        if(not(cin)) {
+            throw std::runtime_error("couldn't get input");
+        }
+        if (input == 'g') {
+            cout << "Enter genre" << endl;
+            string genre;
+            cin >> genre;
 
-    if (input == 'a') {
-        cout << "Enter title" << endl;
-        string title;
-        cin >> title;
-        //FIXME:borrow book
+            printGenre(genre);
+        }
+
+        if (input == 'q') {
+            return;
+        }
+
     }
 }
 
 
-void printUserMenu(User* curruser){
+void printUserMenu(User* currUser){
+
+    cout << "Welcome " << currUser->getName() << endl;
+
+
     char userInput;
-    cout << "Welcome " << curruser->getName() << endl;
-    cout << "Press h to see history" << endl;
-    cout << "Press b to see all books" << endl;
-    // cout << "Press q to log out" << endl;  FIXME: find out when to offer user to log out
-    cin >> userInput;
-
-    //if user picks b call function to show all books
-    cout << endl;
-
-    if(not(cin >> userInput)) {
-        throw std::runtime_error("couldn't get input");
-    }
-
     while(true){
+
+        cout << "Press h to see history" << endl;
+        cout << "Press b to see all books" << endl;
+        cout << "Press b to check out a book" << endl;
+        cout << "Press q to log out" << endl;
+        cin >> userInput;
+
+        //if user picks b call function to show all books
+        cout << endl;
+
+        if(not(cin)) {
+            throw std::runtime_error("couldn't get input");
+        }
+
         if(userInput == 'b') {
             printLibrary();
-            return;
         }
         else if(userInput == 'h') {
-            cout << curruser->readHistory();
-            return;
+            cout << currUser->readHistory();
+        }
+        else if(userInput == 'c') {
+            borrowBook(currUser)
+        }
+        else if(userInput == 'q') {
+            cout << currUser->logOut();
+            break;
         }
         else{
             cout << "not a valid input option, please try again" << endl;
         }
     }
+
+    return;
+
 }
 
+void borrowBook(User* currUser) {
+    string bookName;
+
+    cout << "Enter the book name: ";
+
+    cin >> bookName;
+    cout << endl;
+
+    currUser->checkOut(bookName);
+
+}
 
 void printAdminMenu(Admin* currAdmin){
     char adminChoice;
     cout << "Welcome " << currAdmin->getName() << endl;
-    cout << "Would you like to edit our collection" << endl;
-    cout << "Type y or n" << endl;
-    cin >> adminChoice;
-    cout << endl;
 
-    if(not(cin >> adminChoice)) {
-        throw std::runtime_error("couldn't get input");
-    }
-    
-    while(true){
+    while(true) {
+
+        cout << "Would you like to edit our collection" << endl;
+        cout << "Type y or n" << endl;
+        cin >> adminChoice;
+        cout << endl;
+
+        if(not(cin >> adminChoice)) {
+            throw std::runtime_error("couldn't get input");
+        }
+        
         if(adminChoice == 'y') {
             editLibrary(currAdmin);
             return;
         }
         else if(adminChoice == 'n'){
             cout << "admin doesn't want to edit collection" << endl;
-            return;
+
+            cout << "press 'q' to log out, else press 'c' to continue" << endl;
+
+            cin >> adminChoice;
+
+            if (adminChoice == 'q'){
+
+                return;
+
+            }
+
         }
         else{
             cout << "not a valid input option, please try again" << endl;
         }
+
     }
 }
 
 
 int main() {
+
     Library* newLibrary = new Library();
     char start;
     bool isUser = false;
