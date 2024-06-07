@@ -364,7 +364,7 @@ void printLibrary() {
 }
 
 
-void printUserMenu(User* curruser){
+void printUserMenu(User* curruser, User user;){
     char input;
     cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
@@ -377,6 +377,9 @@ void printUserMenu(User* curruser){
 
     if(input == 'b') {
         printLibrary();
+    }
+    else if(input == 'h') {
+        user.readHistory();
     }
     //add in necessary functions to call
 }
