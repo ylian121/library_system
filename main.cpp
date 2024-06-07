@@ -296,6 +296,7 @@ void editLibrary(Admin* currAdmin) {
             string bookName;
             getline(cin, bookName);
             cout << "Enter the genre to add:" <<endl;
+
             string genreName;
             getline(cin, genreName);
             if (!getline(cin, genreName)) {
@@ -380,6 +381,7 @@ void printLibrary() {
 void printUserMenu(User* currUser){
 
     cout << "Welcome " << currUser->getName() << endl;
+
 
     char userInput;
     while(true){
