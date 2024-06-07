@@ -44,10 +44,10 @@ void User::recommendBooks()
 
 void User::logIn()
 {
-    ifstream inStream;
+    ifstream inFS;
     string fileName = "../users/";
     fileName = fileName + username + ".txt";
-    inStream.open(fileName);
+    inFS.open(fileName);
 
     if(!(inStream.is_open())) {
         throw std::runtime_error("couldn't open user file");
@@ -56,15 +56,18 @@ void User::logIn()
     string junk;
     string bookName;
     
-    getline(inStream, junk); //username
-    getline(inStream, junk); //password
-    getline(inStream, junk); //name
+    getline(inFS, junk); //username
+    getline(inFS, junk); //password
+    getline(inFS, junk); //name
 
-    getline(inStream, bookName);
-    while(!inStream.bad() && !inStream.eof()){
+    getline(inFS, bookName);
+    while(!inFS.bad() && !inFS.eof()){
         booksRead.push_back(myLibrary->getBook(bookName));
-        getline(inStream, bookName);
+        getline(inFS, bookName);
     }
+
+    inFS.close();
+    
 }
 
 void User::logOut()
@@ -92,6 +95,8 @@ void User::logOut()
         outFS << currBook->getName() << std::endl;
 
     }
+
+    outFS.close();
 
 }
 
