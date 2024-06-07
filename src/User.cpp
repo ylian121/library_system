@@ -60,7 +60,7 @@ void User::logIn()
     getline(inStream, junk); //password
     getline(inStream, junk); //name
 
-    getline(inStream, bookName); //FIXME: getline obtains whole line and not just book name 
+    getline(inStream, bookName);
     while(!inStream.bad() && !inStream.eof()){
         booksRead.push_back(myLibrary->getBook(bookName));
         getline(inStream, bookName);
@@ -70,15 +70,27 @@ void User::logIn()
 void User::logOut()
 {
     if(booksOut.size()>0){
+
         throw std::runtime_error("books are still checked out");
+
     }
-    ofstream outStream;
+
+    ofstream outFS;
     string fileName = "../users/";
     fileName = fileName + username + ".txt";
-    outStream.open(fileName);
-    //outStream << username << " " << password << " " << name << endl; FIXME: find what this is doing?
+    outFS.open(fileName);
+
+    if (!(outFS.is_open())) {
+        throw std::runtime_error("couldn't open user file for writing");
+    }
+
+
+    outFS << this->username << std::endl << this->password << std::endl << this->name << std::endl;
+
     for(Book* currBook: booksRead){
-        outStream << currBook->getName() << endl;
+
+        outFS << currBook->getName() << std::endl;
+
     }
 
 }

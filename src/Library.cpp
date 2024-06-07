@@ -55,6 +55,8 @@ void Library::loadBooksFromFile(const string& filename) {
 
             addBook(currBook);
         }
+
+        inFS.close();
     }
 }
 
