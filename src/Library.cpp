@@ -1,13 +1,58 @@
 #include "../header/Book.hpp"
-#include <iostream>
-#include <string.h>
 #include "../header/Library.hpp"
+
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#inlude <stdexcept>
 
 using std::cout;
 using std::endl;
 
 
-Library::Library(){}
+Library::Library(){
+
+    loadBooksFromFile("books.txt");
+
+}
+
+void Library::loadBooksFromFile(const string& filename) {
+
+    std::ifstream inFS(filename);
+
+    if (!(inFS.is_open())) {
+
+        throw std::runtime_error("Unable to open file: " + filename);
+
+        string lineIn;
+        while (std::getline(inFS, lineIn)) {
+
+            std::istringstream stream(line);
+            string bookTitle;
+            string by;
+            string author;
+            string genres;
+
+            std::getline(stream, bookTitle, ' ');
+            std::getline(stream, by, ' ');
+            std::getline(stream, bookTitle, ' ');
+            std::getline(stream, genres, ' ');
+
+            Book* currBook = new Book(bookTitle);
+
+            std::istringstream genresStream(genres);
+            string genre;
+
+            while (std::getline(genresStream, genre, ',')) {
+
+                currBook->addGenre(genre);
+
+            }
+
+            addBook(currBook);
+        }
+    }
+}
 
 //just push to the back
 void Library::addBook(Book* book){
