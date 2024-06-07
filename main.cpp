@@ -247,7 +247,7 @@ void printGenre(const string &genre) {
 
 }
 
-void editLibrary(Library& library) {
+void editLibrary(Library& library, Book genreEdit) {
     char userInput;
     cout << "press a to add books" << endl;
     cout << "press r to remove books" << endl;
@@ -269,13 +269,18 @@ void editLibrary(Library& library) {
     }
     else if (userInput == 'r'){
         //remove
-        library.addBook(newBook);
+        //create book to remove
+        Book* bookToRemove = new Book(title, author, year);
+        library.removeBook(bookToRemove);
     }
     else if (userInput == 'e'){
         //add genre
+        genreEdit.addGenre();
+
     }
-    else if (userInput == 'e'){
+    else if (userInput == 'k'){
         //remove genre
+        genreEdit.removeGenre();
     }
     else if (userInput == 'l'){
         //go to lib
