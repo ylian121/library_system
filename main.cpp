@@ -264,7 +264,9 @@ void editLibrary(Library& library, Book genreEdit) {
     if(userInput == 'a'){
         //add book
         //create a new book
-        Book* newBook = new Book(title, author, year);
+        string bookName;
+        getline(cin, bookName);
+        Book* newBook = new Book(bookName);
         library.addBook(newBook);
     }
     else if (userInput == 'r'){
@@ -276,7 +278,6 @@ void editLibrary(Library& library, Book genreEdit) {
     else if (userInput == 'e'){
         //add genre
         genreEdit.addGenre();
-
     }
     else if (userInput == 'k'){
         //remove genre
