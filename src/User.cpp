@@ -51,7 +51,7 @@ void User::logIn()
     inFS.open(fileName);
 
     if(!(inFS.is_open())) {
-        throw std::runtime_error("couldn't open user file");
+        throw std::runtime_error("couldn't open user file: " + fileName);
     }
 
     string junk;
@@ -105,16 +105,16 @@ void User::logOut()
 
 }
 
-const string& User::readHistory() {
-    string out;
+string User::readHistory() {
+    string sout;
 
     for (unsigned int i = 0; i < booksRead.size(); ++i) {
 
-        out = out + std::to_string(i+1) + ": " + booksRead.at(i)->getName() + '\n';
+        sout = sout + std::to_string(i+1) + ": " + booksRead.at(i)->getName() + '\n';
 
     }
 
-    out = out + "-----END OF BOOKS READ-----" + '\n';
+    sout = sout + "-----END OF BOOKS READ-----" + '\n';
     
-    return out;
+    return sout;
 }

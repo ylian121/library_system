@@ -1,6 +1,5 @@
 #include "../header/Book.hpp"
 #include "../header/Library.hpp"
-#include "Library.hpp"
 
 #include <iostream>
 #include <fstream>

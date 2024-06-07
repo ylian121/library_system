@@ -15,6 +15,8 @@ using std::ifstream;
 using std::runtime_error;
 
 
+void printAdminMenu(Admin*);
+
 void checkSameUserName(string &inputUserName) {
     string userName;
     ifstream inFS;
@@ -248,7 +250,7 @@ void printGenre(const string &genre) {
 
 }
 
-void editLibrary(Book genreEdit, Admin* currAdmin) {
+void editLibrary(Admin* currAdmin) {
     char userInput;
     cout << "press a to add books" << endl;
     cout << "press r to remove books" << endl;
@@ -288,24 +290,30 @@ void editLibrary(Book genreEdit, Admin* currAdmin) {
         }
         else if (userInput == 'e'){
             //add genre
+            cout << "Enter the name of the book:" <<endl;
+            string bookName;
+            getline(cin, bookName);
+            cout << "Enter the gemre to add:" <<endl;
             string genreName;
             getline(cin, genreName);
             if (!getline(cin, genreName)) {
                 throw runtime_error("Couldn't get input.");
             }
-            //needFixHere
-            genreEdit.addGenre(genreName);
+            currAdmin->addGenre(genreName, bookName);
             return;
         }
         else if (userInput == 'k'){
             //remove genre
+            cout << "Enter the name of the book:" <<endl;
+            string bookName;
+            getline(cin, bookName);
+            cout << "Enter the gemre to add:" <<endl;
             string genreName;
             getline(cin, genreName);
             if (!getline(cin, genreName)) {
                 throw runtime_error("Couldn't get input.");
             }
-            //needFixHere
-            genreEdit.removeGenre(genreName);
+            currAdmin->addGenre(genreName, bookName);
             return;
         }
         else if (userInput == 'l'){
@@ -364,7 +372,7 @@ void printLibrary() {
 }
 
 
-void printUserMenu(User* curruser, User user){
+void printUserMenu(User* curruser){
     char userInput;
     cout << "Welcome " << curruser->getName() << endl;
     cout << "Press h to see history" << endl;
@@ -385,7 +393,7 @@ void printUserMenu(User* curruser, User user){
             return;
         }
         else if(userInput == 'h') {
-            cout << user.readHistory();
+            cout << curruser->readHistory();
             return;
         }
         else{
@@ -409,7 +417,7 @@ void printAdminMenu(Admin* currAdmin){
     
     while(true){
         if(adminChoice == 'y') {
-            editLibrary(genreEdit, currAdmin);
+            editLibrary(currAdmin);
             return;
         }
         else if(adminChoice == 'n'){
@@ -501,4 +509,6 @@ int main() {
         printAdminMenu(currAdmin);
     }
 
+    newLibrary->~Library();
+    delete newLibrary;
 }
