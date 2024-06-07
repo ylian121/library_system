@@ -248,7 +248,7 @@ void printGenre(const string &genre) {
 
 }
 
-void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
+void editLibrary(Book genreEdit, Admin* currAdmin) {
     char userInput;
     cout << "press a to add books" << endl;
     cout << "press r to remove books" << endl;
@@ -272,8 +272,7 @@ void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
             if (!getline(cin, bookName)) {
                 throw runtime_error("Couldn't get input.");
             }
-            Book* newBook = new Book(bookName);
-            library.addBook(newBook);
+            currAdmin->addBook(bookName);
             return;
         }
         else if (userInput == 'r'){
@@ -284,8 +283,7 @@ void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
             if (!getline(cin, bookName)) {
                 throw runtime_error("Couldn't get input.");
             }
-            Book* newBook = new Book(bookName);
-            library.remove(newBook);
+            currAdmin->removeBook(bookName);
             return;
         }
         else if (userInput == 'e'){
@@ -295,6 +293,7 @@ void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
             if (!getline(cin, genreName)) {
                 throw runtime_error("Couldn't get input.");
             }
+            //needFixHere
             genreEdit.addGenre(genreName);
             return;
         }
@@ -305,6 +304,7 @@ void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
             if (!getline(cin, genreName)) {
                 throw runtime_error("Couldn't get input.");
             }
+            //needFixHere
             genreEdit.removeGenre(genreName);
             return;
         }
@@ -385,7 +385,7 @@ void printUserMenu(User* curruser, User user){
             return;
         }
         else if(userInput == 'h') {
-            user.readHistory();
+            cout << user.readHistory();
             return;
         }
         else{
@@ -409,7 +409,7 @@ void printAdminMenu(Admin* currAdmin){
     
     while(true){
         if(adminChoice == 'y') {
-            editLibrary(library, genreEdit, currAdmin);
+            editLibrary(genreEdit, currAdmin);
             return;
         }
         else if(adminChoice == 'n'){
