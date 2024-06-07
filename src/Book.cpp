@@ -13,12 +13,14 @@ bool Book::containsGenre(const string& genre) const{
     }
     return false;
 }
+
 void Book::addGenre(const string& genre){
     if(!(this->containsGenre(genre)))
     {
         this->genres.push_back(genre);
     }
 }
+
 void Book::removeGenre(const string& genre){
     if(this->containsGenre(genre)){
         string currGenre;
