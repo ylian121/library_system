@@ -310,14 +310,14 @@ void printUserMenu(User* curruser){
 
 
 void printAdminMenu(Admin* currAdmin){
-    char input;
+    char adminChoice;
     cout << "Welcome " << currAdmin->getName() << endl;
     cout << "Would you like to edit our collection" << endl;
     cout << "Type y or n" << endl;
     cin >> adminChoice;
     cout << endl;
     
-    if(input == 'y') {
+    if(adminChoice == 'y') {
         editLibrary();
     }
 }

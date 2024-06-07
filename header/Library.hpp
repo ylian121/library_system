@@ -17,7 +17,7 @@ class Library{
  public:
     Library();
     
-    void loadBooksFromFile(const string& filename)
+    void loadBooksFromFile(const string& filename);
     void addBook(Book* book);
     void remove(Book* book);
     void checkout(Book* book);
