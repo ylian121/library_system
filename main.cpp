@@ -279,11 +279,15 @@ void editLibrary(Library& library, Book genreEdit) {
     }
     else if (userInput == 'e'){
         //add genre
-        genreEdit.addGenre();
+        string genreName;
+        getline(cin, genreName);
+        genreEdit.addGenre(genreName);
     }
     else if (userInput == 'k'){
         //remove genre
-        genreEdit.removeGenre();
+        string genreName;
+        getline(cin, genreName);
+        genreEdit.removeGenre(genreName);
     }
     else if (userInput == 'l'){
         //go to menu
