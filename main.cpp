@@ -247,12 +247,12 @@ void printGenre(const string &genre) {
 
 }
 
-void editLibrary() {
-    vector<Book> library;
+void editLibrary(Library& library) {
     char userInput;
     cout << "press a to add books" << endl;
     cout << "press r to remove books" << endl;
-    cout << "press e to edit genres" << endl;
+    cout << "press e to add genres" << endl;
+    cout << "press k to remove genres" << endl;
     cout << "press l to go to library" << endl;
 
     cin >> userInput;
@@ -263,14 +263,19 @@ void editLibrary() {
 
     if(userInput == 'a'){
         //add book
+        //create a new book
         Book* newBook = new Book(title, author, year);
         library.addBook(newBook);
     }
     else if (userInput == 'r'){
         //remove
+        library.addBook(newBook);
     }
     else if (userInput == 'e'){
-        //edit
+        //add genre
+    }
+    else if (userInput == 'e'){
+        //remove genre
     }
     else if (userInput == 'l'){
         //go to lib
