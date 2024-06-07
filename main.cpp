@@ -248,7 +248,7 @@ void printGenre(const string &genre) {
 
 }
 
-void editLibrary(Library& library, Book genreEdit) {
+void editLibrary(Library& library, Book genreEdit, Admin* currAdmin) {
     char userInput;
     cout << "press a to add books" << endl;
     cout << "press r to remove books" << endl;
@@ -310,12 +310,6 @@ void editLibrary(Library& library, Book genreEdit) {
         }
         else if (userInput == 'l'){
             //go to menu
-            string adminName;
-            getline(cin, adminName);
-            if (!getline(cin, adminName)) {
-                throw runtime_error("Couldn't get input.");
-            }
-            Admin currAdmin(adminName);
             printAdminMenu(Admin* currAdmin);
             return;
         }
