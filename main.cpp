@@ -402,6 +402,9 @@ void printAdminMenu(Admin* currAdmin){
         cout << "admin doesn't want to edit collection" << endl;
         return;
     }
+    else{
+        cout << "not a valid input option, please try again" << endl;
+    }
 }
 
 
