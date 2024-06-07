@@ -389,6 +389,10 @@ void printAdminMenu(Admin* currAdmin){
     cout << "Type y or n" << endl;
     cin >> adminChoice;
     cout << endl;
+
+    if(not(cin >> adminChoice)) {
+        throw std::runtime_error("couldn't get input");
+    }
     
     if(adminChoice == 'y') {
         editLibrary(library, genreEdit, currAdmin);
