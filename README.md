@@ -57,8 +57,17 @@
  
  ## Screenshots
  > Screenshots of the input/output after running your application
+
  ## Installation/Usage
- > Instructions on installing and running your application
+> Instruction of running application:
+> 1. run the project/program
+> 2. you will see the terminal output asking for your input to sign in or log in
+> 3. input your option
+> 4. you will then be brought to the next terminal output asking for your role
+> 5. log in or sign up
+> 6. after logging into your account, you are open to a lot of options to pick from
+> 7. there are actions such as add book, remove book, add genre, remove genre, etc
+> 8. make your choice to nagivate our library system
  ## Testing
 > Our project is tested and validated with unit tests for each class and each function within each class. Our unit tests are testing to see if each function work as intended with expecting certain values, expecting true or false and with the other different types of expects for unit tests. Most of the unit tests are passing to ensure the correctness of each function and that is how our project is tested and validated.
  
