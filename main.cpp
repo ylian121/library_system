@@ -255,9 +255,25 @@ void editLibrary() {
     cout << "press e to edit genres" << endl;
     cout << "press l to go to library" << endl;
 
+    cin >> userInput;
+
     if(not(cin >> userInput)) {
         throw std::runtime_error("couldn't get input");
     }
+
+    if(userInput == 'a'){
+        //add book
+    }
+    else if (userInput == 'r'){
+        //remove
+    }
+    else if (userInput == 'e'){
+        //edit
+    }
+    else if (userInput == 'l'){
+        //go to lib
+    }
+
 }
 
 void printLibrary() {
