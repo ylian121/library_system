@@ -47,12 +47,6 @@
  > ## Phase III
 
 >Our classes all follow the SOLID principles. Every single class has exactly one role: to represent the object and manipulate its data. The single responsibilty principle made our code better because each class will only have one role. This ensures that a class is not trying to do a lot at the same time. The classes only have one role and this ensures that our classes are short and simple to understand. Every single class won't be too long and complicated because it only has one job. SRP made our code cleaner and shorter to read. All of our objects are open to extension but closed to modification once implemented. The open close principle made our code better because it won't cause any errors when trying to extend what is inherited. It made our code better because we are able to add new features and new functions in our project without breaking anything. This solide principle saves us a lot of issues that will happen otherwise. OCP made our code better because it gives less error if our code is only open for extension without changing what is already done. In all instances of inheritance, all subclasses can substitute and function as an instance of the parent class. The Liskov substituion principle allows the subclasses to replace objects from the parent classes. This ensures that it won't affect what is already done with our parent class. It ensures that our subclasses that inherit from the parent class can do their own thing when replacing certain objects from the parent class. LSP made our code better with good reusability so our subclasses can replace the object from the parent class anytime. Our class design also doesn't allow for interfaces that can violate the ISP or DIP. The dependency inversion principle ensures that the high level modules won't depend on low level modules. This makes it so it is easy to extend our code without causing errors. DIP made our code better by allowing for extendability and flexibility. The interface segregation principle ensures that clients that don't use something won't have to depend on it. In order to ensure that clients don't have to depend of what they don't need to use, we have to keep the interface specific. It makes sure that our interface is not too long. ISP made our code better by keeping interfaces short and simple and not too complicated.
- 
- > ## Final deliverable
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- 
- ## Screenshots
- > Screenshots of the input/output after running your application
 
  ## Installation/Usage
 > Instruction of running application:
@@ -67,7 +61,6 @@
  ## Testing
 > Our project is tested and validated with unit tests for each class and each function within each class. Our unit tests are testing to see if each function work as intended with expecting certain values, expecting true or false and with the other different types of expects for unit tests. Most of the unit tests are passing to ensure the correctness of each function and that is how our project is tested and validated.
  
-Collapse
 
 
 
